@@ -38,7 +38,8 @@ report_src = (ROOT / "docs" / "build_report.py").read_text()
 ARCH_SVG = re.search(r'ARCH_SVG = """(.*?)"""', report_src, re.S).group(1)
 
 CSS = """
-:root { --navy:#00356b; --navy2:#1f4e8c; --dark:#0b2a55; --ink:#1b2a44; --muted:#5f6f88; --soft:#eef3fa; --line:#dbe3ee; --green:#15803d; }
+:root { --navy:#00356b; --navy2:#1f4e8c; --dark:#0b2a55; --ink:#1f2a3c; --muted:#6b6457; --soft:#efe6d6; --line:#e2d7c4; --paper:#fffdf8; --beige:#f6f0e4; --green:#2f7a3d; }
+.reveal-viewport { background: var(--beige) !important; }
 .reveal { font-family: -apple-system, "Segoe UI", Inter, Helvetica, Arial, sans-serif; color: var(--ink); font-size: 30px; }
 .reveal .slides { text-align: left; }
 .reveal .slides section { height: 100%; padding: 0; }
@@ -61,7 +62,7 @@ section.title-slide { color: #fff; }
 /* cards */
 .cards { display: grid; gap: 18px; }
 .c3 { grid-template-columns: repeat(3, 1fr); } .c4 { grid-template-columns: repeat(4, 1fr); } .c2 { grid-template-columns: 1fr 1fr; }
-.card { background: #fff; border: 1px solid var(--line); border-top: 5px solid var(--navy); border-radius: 12px; padding: 20px 22px; font-size: .74em; line-height: 1.4; }
+.card { background: var(--paper); border: 1px solid var(--line); border-top: 5px solid var(--navy); border-radius: 12px; padding: 20px 22px; font-size: .74em; line-height: 1.4; }
 .card h3 { font-size: 1.25em; margin: 0 0 6px; }
 .card ul { margin: 0; padding-left: 1.1em; } .card li { margin: 8px 0; }
 .quote { margin-top: 20px; background: var(--soft); border-left: 6px solid var(--navy); border-radius: 10px; padding: 18px 24px; font-size: .74em; font-style: italic; color: #2b3b57; }
@@ -71,12 +72,13 @@ table.cmp { width: 100%; border-collapse: collapse; font-size: .68em; }
 table.cmp th { background: var(--navy); color: #fff; padding: 12px 12px; text-align: center; font-weight: 600; border: none; }
 table.cmp th:first-child, table.cmp td:first-child { text-align: left; }
 table.cmp td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: center; }
-table.cmp tr:nth-child(even) td { background: #f7f9fc; }
-td.y { color: var(--green); font-weight: 800; } td.n { color: #b8c2d1; } td.som { background: #eaf1fb !important; }
-.pill { display: inline-block; background: var(--soft); border: 1px solid #c7d7ee; color: var(--dark); border-radius: 999px; padding: 8px 16px; font-size: .6em; margin: 18px 8px 0 0; }
+table.cmp td { background: var(--paper); }
+table.cmp tr:nth-child(even) td { background: #f9f4ea; }
+td.y { color: var(--green); font-weight: 800; } td.n { color: #c4b9a6; } td.som { background: #e9eef6 !important; }
+.pill { display: inline-block; background: var(--paper); border: 1px solid var(--line); color: var(--dark); border-radius: 999px; padding: 8px 16px; font-size: .6em; margin: 18px 8px 0 0; }
 .pill b { color: var(--navy); }
 /* diagram */
-.diagram svg { width: 100%; height: 500px; border: 1px solid var(--line); border-radius: 12px; background: #fbfcfe; padding: 6px; }
+.diagram svg { width: 100%; height: 500px; border: 1px solid var(--line); border-radius: 12px; background: var(--paper); padding: 6px; }
 .note { font-size: .6em; color: var(--muted); margin-top: 12px; }
 /* demo */
 .demo { display: grid; grid-template-columns: auto 1fr; gap: 30px; align-items: start; }
@@ -87,7 +89,7 @@ td.y { color: var(--green); font-weight: 800; } td.n { color: #b8c2d1; } td.som 
 .steps { font-size: .62em; margin: 10px 0 0; padding-left: 1.2em; } .steps li { margin: 8px 0; }
 /* numbers */
 .big { font-size: 2.1em; font-weight: 800; color: var(--navy); line-height: 1.05; display: block; margin-bottom: 4px; letter-spacing: -0.02em; }
-.stat { background: #fff; border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; font-size: .64em; line-height: 1.4; color: var(--muted); }
+.stat { background: var(--paper); border: 1px solid var(--line); border-radius: 12px; padding: 20px 22px; font-size: .64em; line-height: 1.4; color: var(--muted); }
 .stat b { color: var(--dark); }
 .stat.dark { background: var(--navy); border-color: var(--navy); color: #c9d8ee; } .stat.dark .big { color: #fff; }
 .split { display: grid; grid-template-columns: 1.1fr .9fr; gap: 28px; align-items: start; }
@@ -100,6 +102,8 @@ ul.tight { font-size: .7em; margin: 0; padding-left: 1.1em; } ul.tight li { marg
 .rt .from { font-size: 1.4em; font-weight: 800; color: #b91c1c; } .rt .to { font-size: 1.4em; font-weight: 800; color: var(--green); }
 .rt span { font-size: .58em; color: var(--muted); }
 .reveal .progress { color: var(--navy); }
+.foot { position: absolute; left: 0; right: 120px; bottom: -18px; display: flex; justify-content: space-between; font-size: 13px; color: #9a8f7c; letter-spacing: .04em; }
+.reveal img { background: #fff; }
 .shots-row { display: flex; gap: 18px; margin-top: 16px; align-items: flex-start; }
 .reveal .rowimg { max-height: 260px; width: auto; border: 1px solid var(--line); border-radius: 10px; }
 .reveal .slide-number { background: transparent; color: #8a9bb5; font-size: 14px; }
@@ -119,11 +123,13 @@ S.append(f"""
   </div>
   <div>{img("home", "shot")}</div>
  </div>
+<aside class="notes">Hi, I'm Claire. SOMthing is a trusted marketplace for the SOM community, for items and skills, with AI agents that only recommend listings that actually exist.</aside>
 </section>""")
 
 # 2. Problem
 S.append("""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">The problem</div>
  <h2>SOM students have nowhere good to buy and sell with each other</h2>
  <p class="sub">I ran into all three of these myself.</p>
@@ -139,6 +145,7 @@ S.append("""
     <li><b>Waste</b>: furniture left on the curb at move-out</li></ul></div>
  </div>
  <div class="quote">“I have a lot to sell and furniture to clear when I move, and I'd gladly pay a classmate by the hour to tutor me. I wanted one trusted place for both.” <b>— Claire, SOMthing's first user</b></div>
+<aside class="notes">I built SOMthing because I had this problem myself. I have a lot to sell and furniture to clear when I move, but Facebook Marketplace exposes my profile to strangers, and our SOM Slack channel is one long message chain where posting many items feels like spam. Last semester I also wanted a paid tutor, and the AASL process meant waiting to be matched into limited slots.</aside>
 </section>""")
 
 # 3. What is new
@@ -153,6 +160,7 @@ rows = [("Only the SOM community", [Ys, Y, N, N, "<td>n/a</td>"]),
 tr = "".join(f"<tr><td>{r}</td>{''.join(c)}</tr>" for r, c in rows)
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">What is new</div>
  <h2>A trusted community + items and skills + an AI that can't make things up</h2>
  <p class="sub">Compared with what SOM students use today.</p>
@@ -160,20 +168,24 @@ S.append(f"""
  <span class="pill"><b>Grounded:</b> only listings the search tool returned</span>
  <span class="pill"><b>Verified:</b> prices and totals come from code</span>
  <span class="pill"><b>Built for school:</b> honor code + scam rules</span>
+<aside class="notes">Each existing tool solves part of this. Slack is trusted but unsearchable, and Facebook Marketplace is searchable but open to strangers. ChatGPT can't see our listings, so it would invent results. SOMthing combines a trusted community, items and skills, and an AI that can only answer from real listings, with code checking every price and total.</aside>
 </section>""")
 
 # 4. Agents
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">How the agents work</div>
  <h2>Two gpt-6-luna agents behind one set of safety checks</h2>
  <div class="diagram">{ARCH_SVG}</div>
  <p class="note"><b>SOMbot</b> turns a buyer's request into searches and verified answers. <b>Listing Helper</b> turns a seller's notes into a priced draft. A small <b>safety guard</b> screens suspicious messages first. Tools are read-only; the AI never posts or sends.</p>
+<aside class="notes">There are two agents on gpt-6-luna. SOMbot helps buyers and the Listing Helper helps sellers. Both sit behind the same input checks and a small safety guard. Their tools are read-only code over the listings database, so the AI chooses what to search but code decides what exists and what it costs. The AI never posts or sends anything.</aside>
 </section>""")
 
 # 5. Demo
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">Demo · one real run</div>
  <h2>“I'm moving in: desk, chair and lamp under $200”</h2>
  <div class="demo">
@@ -187,11 +199,13 @@ S.append(f"""
    </ol>
   </div>
  </div>
+<aside class="notes">This is a real run. I asked for a desk, chair and lamp under $200. SOMbot ran three searches in parallel, picked one listing for each item, and called check_bundle, which added the total in code: $88. Output checks confirmed every ID and price before the cards appeared. On the right, the Listing Helper drafted a priced listing from my rough notes.</aside>
 </section>""")
 
 # 6. Cost
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">Cost to run</div>
  <h2>Under a cent per user per month</h2>
  <p class="sub">Measured token counts × estimated gpt-6-luna prices ($0.10 / $0.01 cached / $0.50 per 1M tokens).</p>
@@ -210,11 +224,13 @@ S.append(f"""
   </ul>
   <div class="stat"><span class="big" style="font-size:1.5em">{(1 - c_opt / c_old) * 100:.0f}% cheaper</span>per answer after optimization (${c_old:.5f} → ${c_opt:.5f}), with accuracy unchanged at <b>10/10</b></div>
  </div>
+<aside class="notes">Every number here comes from measured token counts. A typical answer costs about $0.00016, which is under a cent per user per month, or about $61 a month for 10,000 users. The biggest savings came from prompt caching, compact tool results and low reasoning effort, and accuracy stayed at 10 out of 10.</aside>
 </section>""")
 
 # 7. Safety
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">Safety</div>
  <h2>Eight layers, proven against real attacks</h2>
  <div class="split">
@@ -234,11 +250,13 @@ S.append(f"""
   </div>
   <div>{img("safety_blocks", "safeimg")}<div class="cap">An injection blocked before the AI (0 tokens) and a jailbreak stopped by the guard</div></div>
  </div>
+<aside class="notes">Because members write the listings, injection and scams are real risks. There are eight layers, and I tested them live: the first red-team run handled 11 of 15 attacks, I fixed the gaps, and the second run handled all 15. There are also 55 automated tests. On the right, one attack is blocked before reaching the AI, and a jailbreak is stopped by the guard.</aside>
 </section>""")
 
 # 8. Impact
 S.append(f"""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">Impact</div>
  <h2>Minutes instead of an hour, safely, for cents</h2>
  <div class="cards c4">
@@ -249,11 +267,13 @@ S.append(f"""
  </div>
  <div class="quote"><b>Pilot user:</b> I built SOMthing for my own selling and tutoring needs and used it end to end: finding move-in furniture, drafting a listing for my own furniture, and searching for Excel and statistics help. A class-section pilot is next, and the app already collects thumbs up/down on every answer.</div>
  <div class="shots-row">{img("inbox", "rowimg")}{img("mobile", "rowimg")}</div>
+<aside class="notes">An answer takes about 5 seconds. A move-in bundle that would take 30 to 60 minutes across Slack and apps takes 2 to 3 minutes, and a listing goes from about 10 minutes to about 1. I'm the pilot user and used it end to end for my own needs. A class-section pilot is next, and the app already collects ratings.</aside>
 </section>""")
 
 # 9. Next
 S.append("""
 <section>
+ <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">What's next</div>
  <h2>From classroom demo to a real SOM tool</h2>
  <div class="cards c2">
@@ -269,7 +289,8 @@ S.append("""
    <li>Pattern filters can be evaded; the guard and output checks are the backstop</li>
    <li>Prices are estimates; token counts are measured</li></ul></div>
  </div>
- <p class="note" style="margin-top:22px">Try it: clone the repo, run <code>python run.py</code>, and sign in with demo.student / SOMthing2026.</p>
+ <p class="note" style="margin-top:22px">Press <b>S</b> for speaker notes. Try it: clone the repo, run <code>python run.py</code>, and sign in with demo.student / SOMthing2026.</p>
+<aside class="notes">Next I'd pilot it with a class section, add Yale sign-in and real messaging, and host it online. Today's limits are fictional listings, simulated messaging, and one user so far. You can try it by cloning the repo and running python run.py.</aside>
 </section>""")
 
 html = f"""<!doctype html>
@@ -283,7 +304,8 @@ html = f"""<!doctype html>
 {''.join(S)}
 </div></div>
 <script src="{REVEAL}/reveal.js"></script>
-<script>Reveal.initialize({{ hash: true, slideNumber: "c/t", width: 1280, height: 720, margin: 0.06, center: false, transition: "fade", controls: true, progress: true }});</script>
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+<script>Reveal.initialize({{ hash: true, slideNumber: "c/t", width: 1280, height: 720, margin: 0.06, center: false, transition: "fade", controls: true, progress: true, plugins: [RevealNotes] }});</script>
 </body></html>
 """
 
