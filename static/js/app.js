@@ -635,23 +635,25 @@
         <div class="panel">
           <h3 style="margin-top:0">${ic("compass")} What's new here</h3>
           <table class="compare">
-            <tr><th></th><th>SOMthing</th><th>Facebook Marketplace</th><th>Poshmark</th><th>ChatGPT</th></tr>
-            <tr><td>Only your school community</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Skills &amp; services next to items</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><th></th><th>SOMthing</th><th>SOM Slack</th><th>Facebook Marketplace</th><th>Poshmark / Depop / Vinted</th></tr>
+            <tr><td>Local, in-person pickup</td><td>${yes}</td><td>${yes}</td><td>${yes}</td><td>ship only</td></tr>
+            <tr><td>Only the SOM community</td><td>${yes}</td><td>${yes}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Searchable; sell many items without spamming</td><td>${yes}</td><td>${no}</td><td>${yes}</td><td>${yes}</td></tr>
+            <tr><td>Profile and location private from strangers</td><td>${yes}</td><td>${yes}</td><td>${no}</td><td>partly</td></tr>
+            <tr><td>Skills &amp; services next to items</td><td>${yes}</td><td>ad hoc</td><td>${no}</td><td>${no}</td></tr>
             <tr><td>AI answers from real local listings</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Budget bundles (desk + chair + lamp)</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Listing drafts priced from local comps</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Honor-code &amp; scam guardrails built in</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Budget bundles, totals checked by code</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>AI drafts listings priced from local comps</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
           </table>
-          <div class="small muted" style="margin-top:8px">Based on how each product generally works today. ChatGPT can't see SOMthing's listings, so it can't recommend real offers.</div>
+          <div class="small muted" style="margin-top:8px">Compared with what SOM students use today, based on how each product generally works. Resale apps like Poshmark, Depop and Vinted ship items rather than connecting local buyers and sellers.</div>
         </div>
         <div class="panel">
           <h3 style="margin-top:0">${ic("bolt")} What it costs</h3>
           <table class="facts">
             <tr><td>One SOMbot answer</td><td>≈ 3,100 input (≈80% cached) + 150 output tokens ≈ <b>$0.00016</b></td></tr>
-            <tr><td>Per user per month</td><td>≈ <b>$0.006</b> (30 questions + 4 listing drafts)</td></tr>
-            <tr><td>100 users</td><td>≈ <b>$0.60 / month</b></td></tr>
-            <tr><td>10,000 users</td><td>≈ <b>$60 / month</b></td></tr>
+            <tr><td>Per user per month</td><td>≈ <b>$0.006</b> (30 questions + 4 listing drafts + 3 safety checks)</td></tr>
+            <tr><td>100 users</td><td>≈ <b>$0.61 / month</b></td></tr>
+            <tr><td>10,000 users</td><td>≈ <b>$61 / month</b></td></tr>
           </table>
           <div class="small muted">Measured token counts × estimated gpt-6-luna list prices ($0.10 / $0.01 cached / $0.50 per 1M tokens). Browsing and filters use no AI at all.</div>
           <a class="btn primary" style="margin-top:12px" href="#/dashboard">${ic("chart")} Open the AI &amp; Safety dashboard</a>
