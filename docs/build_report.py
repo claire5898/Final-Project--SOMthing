@@ -112,15 +112,15 @@ ARCH_SVG = """
 
 # ---------- tables ----------
 comparison_rows = """
-<tr><td>Limited to the SOM community</td><td class="ok">✓</td><td class="ok">✓</td><td>open to all</td><td>open to all</td><td>open to all</td><td>n/a</td></tr>
-<tr><td>Searchable by price, category, condition</td><td class="ok">✓</td><td>one message chain</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td>—</td></tr>
-<tr><td>Sell many items without spamming anyone</td><td class="ok">✓</td><td>floods the channel</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td>n/a</td></tr>
-<tr><td>Profile and location private from strangers</td><td class="ok">✓ classmates only</td><td class="ok">✓</td><td>profile visible</td><td>partly</td><td>partly</td><td>n/a</td></tr>
-<tr><td>Skills &amp; services next to items</td><td class="ok">✓</td><td>ad hoc posts</td><td>—</td><td>separate section</td><td>fashion/home only</td><td>—</td></tr>
-<tr><td>Plain-language requests answered from real local listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>can't see listings</td></tr>
-<tr><td>Budget bundles with totals checked by code</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>may invent items</td></tr>
-<tr><td>Listing drafts priced from comparable community listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td><td>no local prices</td></tr>
-<tr><td>Honor-code, scam and prompt-injection guardrails</td><td class="ok">✓</td><td>—</td><td>general moderation</td><td>general moderation</td><td>general moderation</td><td>general safety</td></tr>
+<tr><td>Limited to the SOM community</td><td class="ok">✓</td><td class="ok">✓</td><td>open to all</td><td>open to all</td><td>open to all</td></tr>
+<tr><td>Searchable by price, category, condition</td><td class="ok">✓</td><td>one message chain</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+<tr><td>Sell many items without spamming anyone</td><td class="ok">✓</td><td>floods the channel</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
+<tr><td>Profile and location private from strangers</td><td class="ok">✓ classmates only</td><td class="ok">✓</td><td>profile visible</td><td>partly</td><td>partly</td></tr>
+<tr><td>Skills &amp; services next to items</td><td class="ok">✓</td><td>ad hoc posts</td><td>—</td><td>separate section</td><td>fashion/home only</td></tr>
+<tr><td>Plain-language requests answered from real local listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Budget bundles with totals checked by code</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Listing drafts priced from comparable community listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
+<tr><td>Honor-code, scam and prompt-injection guardrails</td><td class="ok">✓</td><td>—</td><td>general moderation</td><td>general moderation</td><td>general moderation</td></tr>
 """
 
 agents_rows = """
@@ -329,18 +329,18 @@ html = f"""<!doctype html>
 
 <!-- ======================= 3. WHAT IS NEW ======================= -->
 {section(3, "What Is New Here", "What already exists, and what SOMthing does differently")}
-<p>I compared SOMthing with what SOM students use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, Poshmark, ChatGPT, and the official AASL tutoring process. Each is useful for something, but none combines a <i>trusted community</i>, <i>items and skills in one place</i>, and <i>an AI that answers only from real local listings</i>.</p>
+<p>I compared SOMthing with what SOM students use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, Poshmark, and the official AASL tutoring process. Each is useful for something, but none combines a <i>trusted community</i>, <i>items and skills in one place</i>, and <i>an AI that answers only from real local listings</i>.</p>
 {figure("home", "SOMthing's home page, signed in as the demo account. Physical Things and Skills &amp; Services sit side by side, with category shortcuts, fresh listings and the “Ask SOMbot” assistant.")}
-{table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark", "ChatGPT"], comparison_rows, "keep")}
+{table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark"], comparison_rows, "keep")}
 <p class="dim">Based on how each product generally works today, as I understand it. The point is the combination, not that any single feature is unique.</p>
 <p><b>Tutoring today vs. SOMthing.</b> The official route (email AASL, wait to be matched, fit into limited slots) is valuable but slow and inflexible. SOMthing complements it with a peer option: students browse classmates who offer tutoring, Excel or coding help, compare experience and hourly rates, and message one directly.</p>
 <p><b>What is genuinely new.</b> A campus marketplace by itself is not a new idea. The novelty is in how the agents are designed and safeguarded:</p>
 <ul>
-  <li><b>A grounded, verified assistant.</b> SOMbot can show only listings that its search tool returned. Prices come from the database, and bundle totals are added up by code, never by the model. A general chatbot like ChatGPT can't do this, because it has never seen SOMthing's listings.</li>
+  <li><b>A grounded, verified assistant.</b> SOMbot can show only listings that its search tool returned. Prices come from the database, and bundle totals are added up by code, never by the model. A general-purpose AI chatbot can't do this, because it has never seen SOMthing's listings.</li>
   <li><b>AI help for sellers, too.</b> Rough notes become a clean listing, priced against comparable listings in the same community.</li>
   <li><b>Safety designed for a school.</b> Honor-code rules (no selling exam answers), scam holds and a ban on contact info in listings are built in from the start.</li>
 </ul>
-{evidence(["Six named alternatives compared feature by feature (Table 1)", "A frank statement of what is and isn't new"])}
+{evidence(["Five named alternatives compared feature by feature (Table 1)", "A frank statement of what is and isn't new"])}
 
 <!-- ======================= 4. THE AGENTS ======================= -->
 {section(4, "The Agents", "Who does what, with which tools, and one real run")}

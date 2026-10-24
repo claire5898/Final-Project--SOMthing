@@ -178,12 +178,13 @@ S.append("""
 # 3. What is new
 Y, N = '<td class="y">✓</td>', '<td class="n">—</td>'
 Ys = '<td class="y som">✓</td>'
-rows = [("Only the SOM community", [Ys, Y, N, N, "<td>n/a</td>"]),
-        ("Searchable; sell many items without spamming", [Ys, N, Y, Y, N]),
-        ("Skills &amp; services next to items", [Ys, '<td>ad hoc</td>', N, N, N]),
-        ("AI answers from real local listings", [Ys, N, N, N, N]),
-        ("Budget bundles, totals checked by code", [Ys, N, N, N, N]),
-        ("AI drafts listings priced from local comps", [Ys, N, N, N, N])]
+rows = [("Only the SOM community", [Ys, Y, N, N]),
+        ("Searchable; sell many items without spamming", [Ys, N, Y, Y]),
+        ("Profile and location private from strangers", [Ys, Y, N, '<td>partly</td>']),
+        ("Skills &amp; services next to items", [Ys, '<td>ad hoc</td>', N, N]),
+        ("AI answers from real local listings", [Ys, N, N, N]),
+        ("Budget bundles, totals checked by code", [Ys, N, N, N]),
+        ("AI drafts listings priced from local comps", [Ys, N, N, N])]
 tr = "".join(f"<tr><td>{r}</td>{''.join(c)}</tr>" for r, c in rows)
 S.append(f"""
 <section>
@@ -191,11 +192,11 @@ S.append(f"""
  <div class="kicker">What is new</div>
  <h2>A trusted community + items and skills + an AI that can't make things up</h2>
  <p class="sub">Compared with what SOM students use today.</p>
- <table class="cmp"><tr><th>What students need</th><th>SOMthing</th><th>SOM Slack</th><th>FB Marketplace</th><th>Poshmark</th><th>ChatGPT</th></tr>{tr}</table>
+ <table class="cmp"><tr><th>What students need</th><th>SOMthing</th><th>SOM Slack</th><th>FB Marketplace</th><th>Poshmark</th></tr>{tr}</table>
  <span class="pill"><b>Grounded:</b> only listings the search tool returned</span>
  <span class="pill"><b>Verified:</b> prices and totals come from code</span>
  <span class="pill"><b>Built for school:</b> honor code + scam rules</span>
-<aside class="notes">Each existing tool solves part of this. Slack is trusted but unsearchable, and Facebook Marketplace is searchable but open to strangers. ChatGPT can't see our listings, so it would invent results. SOMthing combines a trusted community, items and skills, and an AI that can only answer from real listings, with code checking every price and total.</aside>
+<aside class="notes">Each existing tool solves part of this. Slack is trusted but unsearchable, and Facebook Marketplace is searchable but open to strangers. SOMthing combines a trusted community, items and skills, and an AI that can only answer from real listings, with code checking every price and total.</aside>
 </section>""")
 
 # 4. Agents
