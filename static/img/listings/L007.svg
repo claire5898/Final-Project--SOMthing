@@ -1,19 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <defs>
-    <radialGradient id="g" cx="457" cy="413" r="520" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff7ac0" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#120d1a" stop-opacity="1"/>
-    </radialGradient>
-    <pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.07"/>
-    </pattern>
-  </defs>
-  <rect width="800" height="600" fill="#120d1a"/>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect width="800" height="600" fill="url(#d)"/>
-  <circle cx="400" cy="285" r="170" fill="#000" fill-opacity="0.28"/>
-  <circle cx="400" cy="285" r="170" fill="none" stroke="#ff7ac0" stroke-opacity="0.6" stroke-width="3"/>
-  <text x="400" y="290" font-size="180" text-anchor="middle" dominant-baseline="central" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">📚</text>
-  <rect x="24" y="532" rx="18" width="157" height="44" fill="#000" fill-opacity="0.55"/>
-  <text x="44" y="561" font-size="22" fill="#ffd1e8" font-family="Helvetica, Arial, sans-serif" font-weight="700">Furniture</text>
+  <rect width="800" height="600" fill="#e9f0f9"/>
+  <circle cx="407" cy="183" r="230" fill="#ffffff" opacity="0.75"/>
+  <circle cx="393" cy="499" r="120" fill="#e3ebf7" opacity="0.9"/>
+  <rect x="0" y="472" width="800" height="128" fill="#dfe7f3"/>
+  <ellipse cx="400" cy="474" rx="140" ry="14" fill="#0b2a55" opacity="0.10"/><rect x="290" y="100" width="220" height="368" rx="6" fill="#ffffff" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><line x1="290" y1="198" x2="510" y2="198" stroke="#0b2a55" stroke-width="6" stroke-linecap="round"/><line x1="290" y1="288" x2="510" y2="288" stroke="#0b2a55" stroke-width="6" stroke-linecap="round"/><line x1="290" y1="378" x2="510" y2="378" stroke="#0b2a55" stroke-width="6" stroke-linecap="round"/><rect x="312" y="128" width="26" height="70" rx="3" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="342" y="128" width="26" height="70" rx="3" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="372" y="128" width="26" height="70" rx="3" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="402" y="128" width="26" height="70" rx="3" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="312" y="218" width="26" height="70" rx="3" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="342" y="218" width="26" height="70" rx="3" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="372" y="218" width="26" height="70" rx="3" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="312" y="308" width="26" height="70" rx="3" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="342" y="308" width="26" height="70" rx="3" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="372" y="308" width="26" height="70" rx="3" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="402" y="308" width="26" height="70" rx="3" fill="#e3ebf7" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="432" y="308" width="26" height="70" rx="3" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="312" y="398" width="120" height="48" rx="6" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="24" y="532" rx="18" width="157" height="44" fill="#0b2a55"/>
+  <text x="44" y="561" font-size="22" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-weight="700">Furniture</text>
 </svg>

@@ -1,19 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <defs>
-    <radialGradient id="g" cx="415" cy="222" r="520" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff5c9e" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#190f12" stop-opacity="1"/>
-    </radialGradient>
-    <pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.07"/>
-    </pattern>
-  </defs>
-  <rect width="800" height="600" fill="#190f12"/>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect width="800" height="600" fill="url(#d)"/>
-  <circle cx="400" cy="285" r="170" fill="#000" fill-opacity="0.28"/>
-  <circle cx="400" cy="285" r="170" fill="none" stroke="#ff5c9e" stroke-opacity="0.6" stroke-width="3"/>
-  <text x="400" y="290" font-size="180" text-anchor="middle" dominant-baseline="central" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">🚗</text>
-  <rect x="24" y="532" rx="18" width="92" height="44" fill="#000" fill-opacity="0.55"/>
-  <text x="44" y="561" font-size="22" fill="#ffd1e8" font-family="Helvetica, Arial, sans-serif" font-weight="700">Cars</text>
+  <rect width="800" height="600" fill="#e6edf7"/>
+  <circle cx="465" cy="92" r="230" fill="#ffffff" opacity="0.75"/>
+  <circle cx="335" cy="530" r="120" fill="#e3ebf7" opacity="0.9"/>
+  <rect x="0" y="472" width="800" height="128" fill="#dfe7f3"/>
+  <ellipse cx="400" cy="474" rx="260" ry="14" fill="#0b2a55" opacity="0.10"/><path d="M260 250 L330 180 L500 180 L560 250 Z" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M150 380 L160 285 Q170 250 210 248 L600 248 Q650 250 660 300 L660 380 Z" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M290 245 L340 196 L400 196 L400 245 Z" fill="#e3ebf7" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><path d="M420 245 L420 196 L490 196 L535 245 Z" fill="#e3ebf7" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="620" y="290" width="34" height="22" rx="6" fill="#ffffff" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="156" y="290" width="30" height="22" rx="6" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><line x1="400" y1="260" x2="400" y2="370" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><circle cx="265" cy="385" r="52" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="265" cy="385" r="22" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="545" cy="385" r="52" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="545" cy="385" r="22" fill="#b7cbe8" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="24" y="532" rx="18" width="92" height="44" fill="#0b2a55"/>
+  <text x="44" y="561" font-size="22" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-weight="700">Cars</text>
 </svg>

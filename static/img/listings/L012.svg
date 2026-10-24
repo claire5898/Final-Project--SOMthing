@@ -1,19 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <defs>
-    <radialGradient id="g" cx="540" cy="368" r="520" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#fb7185" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#1a1212" stop-opacity="1"/>
-    </radialGradient>
-    <pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.07"/>
-    </pattern>
-  </defs>
-  <rect width="800" height="600" fill="#1a1212"/>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect width="800" height="600" fill="url(#d)"/>
-  <circle cx="400" cy="285" r="170" fill="#000" fill-opacity="0.28"/>
-  <circle cx="400" cy="285" r="170" fill="none" stroke="#fb7185" stroke-opacity="0.6" stroke-width="3"/>
-  <text x="400" y="290" font-size="180" text-anchor="middle" dominant-baseline="central" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">🧶</text>
-  <rect x="24" y="532" rx="18" width="235" height="44" fill="#000" fill-opacity="0.55"/>
-  <text x="44" y="561" font-size="22" fill="#ffd1e8" font-family="Helvetica, Arial, sans-serif" font-weight="700">Household Items</text>
+  <rect width="800" height="600" fill="#eef3fa"/>
+  <circle cx="290" cy="138" r="230" fill="#ffffff" opacity="0.75"/>
+  <circle cx="510" cy="514" r="120" fill="#e3ebf7" opacity="0.9"/>
+  <rect x="0" y="472" width="800" height="128" fill="#dfe7f3"/>
+  <polygon points="230,230 610,230 570,400 190,400" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><polygon points="262,252 582,252 550,378 230,378" fill="#ffffff" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><polygon points="300,280 545,280 522,350 278,350" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><circle cx="411" cy="315" r="22" fill="#e3ebf7" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><line x1="250" y1="400" x2="230" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="280" y1="400" x2="260" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="310" y1="400" x2="290" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="340" y1="400" x2="320" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="370" y1="400" x2="350" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="400" y1="400" x2="380" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="430" y1="400" x2="410" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="460" y1="400" x2="440" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="490" y1="400" x2="470" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="520" y1="400" x2="500" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/><line x1="550" y1="400" x2="530" y2="430" stroke="#0b2a55" stroke-width="4" stroke-linecap="round"/>
+  <rect x="24" y="532" rx="18" width="235" height="44" fill="#0b2a55"/>
+  <text x="44" y="561" font-size="22" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-weight="700">Household Items</text>
 </svg>

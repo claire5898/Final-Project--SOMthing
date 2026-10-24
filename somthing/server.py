@@ -268,9 +268,10 @@ def create_app(state: AppState | None = None) -> FastAPI:
     @app.get("/api/inquiries")
     def list_inquiries(request: Request):
         uid = user_id(request)
-        sent = [i for i in state.store.inquiries if i["from_user_id"] == uid][::-1]
-        for i in sent:
-            i["to_name"] = state.store.seller_summary(i["to_user_id"])["name"]
+        sent = [
+            {**i, "to_name": state.store.seller_summary(i["to_user_id"])["name"]}
+            for i in state.store.inquiries if i["from_user_id"] == uid
+        ][::-1]
         return {"sent": sent}
 
     # ----- AI endpoints ---------------------------------------------------------------

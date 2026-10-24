@@ -1,19 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" width="800" height="600">
-  <defs>
-    <radialGradient id="g" cx="354" cy="356" r="520" gradientUnits="userSpaceOnUse">
-      <stop offset="0" stop-color="#ff3d8b" stop-opacity="0.55"/>
-      <stop offset="1" stop-color="#1c1015" stop-opacity="1"/>
-    </radialGradient>
-    <pattern id="d" width="28" height="28" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.4" fill="#ffffff" fill-opacity="0.07"/>
-    </pattern>
-  </defs>
-  <rect width="800" height="600" fill="#1c1015"/>
-  <rect width="800" height="600" fill="url(#g)"/>
-  <rect width="800" height="600" fill="url(#d)"/>
-  <circle cx="400" cy="285" r="170" fill="#000" fill-opacity="0.28"/>
-  <circle cx="400" cy="285" r="170" fill="none" stroke="#ff3d8b" stroke-opacity="0.6" stroke-width="3"/>
-  <text x="400" y="290" font-size="180" text-anchor="middle" dominant-baseline="central" font-family="Apple Color Emoji, Segoe UI Emoji, Noto Color Emoji, sans-serif">⚽</text>
-  <rect x="24" y="532" rx="18" width="222" height="44" fill="#000" fill-opacity="0.55"/>
-  <text x="44" y="561" font-size="22" fill="#ffd1e8" font-family="Helvetica, Arial, sans-serif" font-weight="700">Sports &amp; Hobby</text>
+  <rect width="800" height="600" fill="#f2f5fb"/>
+  <circle cx="604" cy="226" r="230" fill="#ffffff" opacity="0.75"/>
+  <circle cx="196" cy="485" r="120" fill="#e3ebf7" opacity="0.9"/>
+  <rect x="0" y="472" width="800" height="128" fill="#dfe7f3"/>
+  <ellipse cx="400" cy="474" rx="240" ry="14" fill="#0b2a55" opacity="0.10"/><rect x="220" y="345" width="360" height="30" rx="12" fill="#5b86c5" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="190" y="270" width="60" height="180" rx="14" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="250" y="295" width="40" height="130" rx="10" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="550" y="270" width="60" height="180" rx="14" fill="#0b2a55" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/><rect x="510" y="295" width="40" height="130" rx="10" fill="#1f4e8c" stroke="#0b2a55" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+  <rect x="24" y="532" rx="18" width="222" height="44" fill="#0b2a55"/>
+  <text x="44" y="561" font-size="22" fill="#ffffff" font-family="Helvetica, Arial, sans-serif" font-weight="700">Sports &amp; Hobby</text>
 </svg>

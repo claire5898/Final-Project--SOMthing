@@ -439,7 +439,7 @@ def _precheck(text: str, max_chars: int, session_key: str, record: RunRecord, gu
     if "prompt_injection" in scan_text(text):
         return _blocked(
             "prompt_injection",
-            "🛡️ That message looks like an attempt to change my instructions, so I didn't send it to the AI. "
+            "That message looks like an attempt to change my instructions, so I didn't send it to the AI. "
             "I can only help you find listings on SOMthing.",
             record, guards, started,
         )

@@ -67,14 +67,14 @@ To stop the app, press `Ctrl+C` in the terminal.
 1. **Browse:** use *Physical Things* or *Skills & Services*, pick a category chip, set a max price, and sort. Browsing uses no AI.
 2. **Open a listing:** see the photo, price, condition (items) or experience and per hour/session/project pricing (services), location, availability and seller.
 3. **Seller profiles:** click a seller to see their program, class year, bio and listings.
-4. **Ask SOMbot** (pink ✨ button):
+4. **Ask SOMbot** (navy button, bottom right):
    - `Find a desk under $100`
    - `I need help with Excel`
    - `I'm moving in: desk, chair and lamp for under $200 total`: SOMbot builds a bundle, and the **app** (not the AI) checks the total.
    - `A car under $5,000`: no match, so SOMbot says so honestly.
    - Open **"How I found these"** under any answer to see the agent's tool calls, and the ⚡ line for its token usage.
-5. **Sell:** **+ Sell** → type rough notes → **✨ Draft my listing** → review → **Post listing**.
-6. **Save and contact:** tap ♡ to save, or **Contact seller** to send a simulated inquiry, which appears in **✉ Inbox**.
+5. **Sell:** **+ Sell** → type rough notes → **Draft my listing** → review → **Post listing**.
+6. **Save and contact:** tap the heart to save, or **Contact seller** to send a simulated inquiry, which appears in **Inbox**.
 7. **AI & Safety dashboard** (account menu): live token usage per run, guardrail events, held listings, and one-click attack demos.
 8. **Reset demo data** (account menu) returns everything to the starting state.
 
@@ -130,7 +130,7 @@ static/                 website (plain HTML/CSS/JS, no build step)
 data/                   fictional users.json and listings.json
 tests/                  automated tests (fake model, no tokens)
 evals/                  live accuracy + token evaluation and saved results
-scripts/make_images.py  regenerates the illustrated listing photos
+scripts/                draws the navy-and-white illustrations (make_images.py, illustrations.py)
 ```
 
 **Dataset:** the demo dataset is small (14 fictional users and 54 listings in `data/`), so there's no separate big dataset to switch to.
