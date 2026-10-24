@@ -1,0 +1,15 @@
+{
+  "columns": ["SOMthing", "SOM Slack", "Facebook Marketplace", "Craigslist", "Poshmark / Depop / Vinted"],
+  "rows": [
+    ["Local, in-person pickup", "yes", "yes", "yes", "yes", "ship only"],
+    ["Only the SOM community", "yes", "yes", "no", "no", "no"],
+    ["Searchable; sell many items without spamming", "yes", "no", "yes", "yes", "yes"],
+    ["Profile and location private from strangers", "yes", "yes", "no", "partly", "partly"],
+    ["Skills & services next to items", "yes", "ad hoc", "no", "separate section", "no"],
+    ["AI answers from real local listings", "yes", "no", "no", "no", "no"],
+    ["Budget bundles, totals checked by code", "yes", "no", "no", "no", "no"],
+    ["AI drafts listings priced from local comps", "yes", "no", "no", "no", "no"],
+    ["Honor-code, scam and prompt-injection guardrails", "yes", "no", "general moderation", "general moderation", "general moderation"]
+  ],
+  "note": "Compared with what SOM students use today, based on how each product generally works. Resale apps like Poshmark, Depop and Vinted ship items rather than connecting local buyers and sellers."
+}

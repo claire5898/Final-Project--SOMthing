@@ -69,12 +69,12 @@ section.title-slide { color: #fff; }
 .quote b { font-style: normal; color: var(--dark); }
 /* table */
 table.cmp { width: 100%; border-collapse: collapse; font-size: .68em; }
-table.cmp th { background: var(--navy); color: #fff; padding: 12px 12px; text-align: center; font-weight: 600; border: none; }
+table.cmp th { background: var(--navy); color: #fff; padding: 9px 10px; text-align: center; font-weight: 600; border: none; }
 table.cmp th:first-child, table.cmp td:first-child { text-align: left; }
-table.cmp td { padding: 11px 12px; border-bottom: 1px solid var(--line); text-align: center; }
+table.cmp td { padding: 8px 10px; border-bottom: 1px solid var(--line); text-align: center; }
 table.cmp td { background: var(--paper); }
 table.cmp tr:nth-child(even) td { background: #f9f4ea; }
-td.y { color: var(--green); font-weight: 800; } td.n { color: #c4b9a6; } td.som { background: #e9eef6 !important; }
+td.y { color: var(--green); font-weight: 800; } td.txt { font-size: .85em; color: #4a4336; } td.n { color: #c4b9a6; } td.som { background: #e9eef6 !important; }
 .pill { display: inline-block; background: var(--paper); border: 1px solid var(--line); color: var(--dark); border-radius: 999px; padding: 8px 16px; font-size: .6em; margin: 18px 8px 0 0; }
 .pill b { color: var(--navy); }
 /* diagram */
@@ -176,28 +176,29 @@ S.append("""
 </section>""")
 
 # 3. What is new
-Y, N = '<td class="y">✓</td>', '<td class="n">—</td>'
-Ys = '<td class="y som">✓</td>'
-rows = [("Local, in-person pickup", [Ys, Y, Y, '<td>ship only</td>']),
-        ("Only the SOM community", [Ys, Y, N, N]),
-        ("Searchable; sell many items without spamming", [Ys, N, Y, Y]),
-        ("Profile and location private from strangers", [Ys, Y, N, '<td>partly</td>']),
-        ("Skills &amp; services next to items", [Ys, '<td>ad hoc</td>', N, N]),
-        ("AI answers from real local listings", [Ys, N, N, N]),
-        ("Budget bundles, totals checked by code", [Ys, N, N, N]),
-        ("AI drafts listings priced from local comps", [Ys, N, N, N])]
-tr = "".join(f"<tr><td>{r}</td>{''.join(c)}</tr>" for r, c in rows)
+COMP = json.loads((ROOT / "data" / "comparison.json").read_text())
+
+
+def _cell(v, k):
+    if v == "yes":
+        return '<td class="y som">✓</td>' if k == 0 else '<td class="y">✓</td>'
+    if v == "no":
+        return '<td class="n">—</td>'
+    return f'<td class="txt">{v}</td>'
+
+
+tr = "".join("<tr><td>" + r[0].replace("&", "&amp;") + "</td>" + "".join(_cell(v, k) for k, v in enumerate(r[1:])) + "</tr>" for r in COMP["rows"])
+head = "".join(f"<th>{c}</th>" for c in COMP["columns"])
 S.append(f"""
 <section>
  <div class="foot"><span>SOMthing · Claire Zhao</span><span>AI Foundations for Managers · Final Project</span></div>
  <div class="kicker">What is new</div>
  <h2>A trusted community + items and skills + an AI that can't make things up</h2>
- <p class="sub">Compared with what SOM students use today.</p>
- <table class="cmp"><tr><th>What students need</th><th>SOMthing</th><th>SOM Slack</th><th>FB Marketplace</th><th>Poshmark / Depop / Vinted</th></tr>{tr}</table>
+ <table class="cmp"><tr><th>What students need</th>{head}</tr>{tr}</table>
  <span class="pill"><b>Grounded:</b> only listings the search tool returned</span>
  <span class="pill"><b>Verified:</b> prices and totals come from code</span>
  <span class="pill"><b>Built for school:</b> honor code + scam rules</span>
-<aside class="notes">Each existing tool solves part of this. Slack is trusted but unsearchable, Facebook Marketplace is searchable but open to strangers, and resale apps like Poshmark, Depop and Vinted aren't local: everything ships. SOMthing combines a trusted community, items and skills, and an AI that can only answer from real listings, with code checking every price and total.</aside>
+<aside class="notes">Each existing tool solves part of this. Slack is trusted but unsearchable, Facebook Marketplace is searchable but open to strangers, and Craigslist is local but open to anyone, and resale apps like Poshmark, Depop and Vinted aren't local: everything ships. SOMthing combines a trusted community, items and skills, and an AI that can only answer from real listings, with code checking every price and total.</aside>
 </section>""")
 
 # 4. Agents

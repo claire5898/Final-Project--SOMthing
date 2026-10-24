@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import json
 import secrets
 import threading
 import uuid
@@ -152,6 +153,7 @@ def create_app(state: AppState | None = None) -> FastAPI:
             "category_emoji": category_emoji(),
             "category_counts": counts,
             "demo_login": {"yale_id": config.DEMO_LOGIN_ID, "password": config.DEMO_LOGIN_PASSWORD},
+            "comparison": json.loads((config.DATA_DIR / "comparison.json").read_text()),
         }
 
     @app.get("/api/health")

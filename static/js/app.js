@@ -635,17 +635,10 @@
         <div class="panel">
           <h3 style="margin-top:0">${ic("compass")} What's new here</h3>
           <table class="compare">
-            <tr><th></th><th>SOMthing</th><th>SOM Slack</th><th>Facebook Marketplace</th><th>Poshmark / Depop / Vinted</th></tr>
-            <tr><td>Local, in-person pickup</td><td>${yes}</td><td>${yes}</td><td>${yes}</td><td>ship only</td></tr>
-            <tr><td>Only the SOM community</td><td>${yes}</td><td>${yes}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Searchable; sell many items without spamming</td><td>${yes}</td><td>${no}</td><td>${yes}</td><td>${yes}</td></tr>
-            <tr><td>Profile and location private from strangers</td><td>${yes}</td><td>${yes}</td><td>${no}</td><td>partly</td></tr>
-            <tr><td>Skills &amp; services next to items</td><td>${yes}</td><td>ad hoc</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>AI answers from real local listings</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>Budget bundles, totals checked by code</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
-            <tr><td>AI drafts listings priced from local comps</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><th></th>${S.meta.comparison.columns.map((c) => `<th>${esc(c)}</th>`).join("")}</tr>
+            ${S.meta.comparison.rows.map((r) => `<tr><td>${esc(r[0])}</td>${r.slice(1).map((v) => `<td>${v === "yes" ? yes : v === "no" ? no : esc(v)}</td>`).join("")}</tr>`).join("")}
           </table>
-          <div class="small muted" style="margin-top:8px">Compared with what SOM students use today, based on how each product generally works. Resale apps like Poshmark, Depop and Vinted ship items rather than connecting local buyers and sellers.</div>
+          <div class="small muted" style="margin-top:8px">${esc(S.meta.comparison.note)}</div>
         </div>
         <div class="panel">
           <h3 style="margin-top:0">${ic("bolt")} What it costs</h3>

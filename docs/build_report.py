@@ -111,18 +111,20 @@ ARCH_SVG = """
 </svg>"""
 
 # ---------- tables ----------
-comparison_rows = """
-<tr><td>Local, in-person pickup (no shipping)</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td><td>ship only; not local</td></tr>
-<tr><td>Limited to the SOM community</td><td class="ok">✓</td><td class="ok">✓</td><td>open to all</td><td>open to all</td><td>open to all</td></tr>
-<tr><td>Searchable by price, category, condition</td><td class="ok">✓</td><td>one message chain</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
-<tr><td>Sell many items without spamming anyone</td><td class="ok">✓</td><td>floods the channel</td><td class="ok">✓</td><td class="ok">✓</td><td class="ok">✓</td></tr>
-<tr><td>Profile and location private from strangers</td><td class="ok">✓ classmates only</td><td class="ok">✓</td><td>profile visible</td><td>partly</td><td>partly</td></tr>
-<tr><td>Skills &amp; services next to items</td><td class="ok">✓</td><td>ad hoc posts</td><td>—</td><td>separate section</td><td>fashion/home only</td></tr>
-<tr><td>Plain-language requests answered from real local listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Budget bundles with totals checked by code</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Listing drafts priced from comparable community listings</td><td class="ok">✓</td><td>—</td><td>—</td><td>—</td><td>—</td></tr>
-<tr><td>Honor-code, scam and prompt-injection guardrails</td><td class="ok">✓</td><td>—</td><td>general moderation</td><td>general moderation</td><td>general moderation</td></tr>
-"""
+COMP = json.loads((ROOT / "data" / "comparison.json").read_text())
+
+
+def _cmp_cell(v, first=False):
+    if v == "yes":
+        return '<td class="ok">✓</td>'
+    if v == "no":
+        return "<td>—</td>"
+    return f"<td>{v}</td>"
+
+
+comparison_rows = "".join(
+    "<tr><td>" + r[0].replace("&", "&amp;") + "</td>" + "".join(_cmp_cell(v) for v in r[1:]) + "</tr>" for r in COMP["rows"]
+)
 
 agents_rows = """
 <tr><td><b>SOMbot</b><br><span class="dim">shopping assistant</span></td><td>Turns a buyer's request into searches, picks the best real listings, builds budget bundles and writes a short answer</td><td>Buyer's message (after input checks) + last 4 chat turns</td><td>Structured JSON: reply, listing IDs, bundle IDs, no-match flag</td></tr>
@@ -332,8 +334,8 @@ html = f"""<!doctype html>
 {section(3, "What Is New Here", "What already exists, and what SOMthing does differently")}
 <p>I compared SOMthing with what SOM students use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, resale apps such as Poshmark, Depop and Vinted, and the official AASL tutoring process. Each is useful for something, but none combines a <i>trusted community</i>, <i>items and skills in one place</i>, and <i>an AI that answers only from real local listings</i>.</p>
 {figure("home", "SOMthing's home page, signed in as the demo account. Physical Things and Skills &amp; Services sit side by side, with category shortcuts, fresh listings and the “Ask SOMbot” assistant.")}
-{table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark / Depop / Vinted"], comparison_rows, "keep")}
-<p class="dim">Based on how each product generally works today, as I understand it. The point is the combination, not that any single feature is unique.</p>
+{table("SOMthing compared with the alternatives SOM students use today.", ["What students need"] + COMP["columns"], comparison_rows, "keep")}
+<p class="dim">{COMP["note"]} The point is the combination, not that any single feature is unique.</p>
 <p><b>Tutoring today vs. SOMthing.</b> The official route (email AASL, wait to be matched, fit into limited slots) is valuable but slow and inflexible. SOMthing complements it with a peer option: students browse classmates who offer tutoring, Excel or coding help, compare experience and hourly rates, and message one directly.</p>
 <p><b>What is genuinely new.</b> A campus marketplace by itself is not a new idea. The novelty is in how the agents are designed and safeguarded:</p>
 <ul>
@@ -341,7 +343,7 @@ html = f"""<!doctype html>
   <li><b>AI help for sellers, too.</b> Rough notes become a clean listing, priced against comparable listings in the same community.</li>
   <li><b>Safety designed for a school.</b> Honor-code rules (no selling exam answers), scam holds and a ban on contact info in listings are built in from the start.</li>
 </ul>
-{evidence(["Named alternatives (SOM Slack, Facebook Marketplace, Craigslist, Poshmark, Depop, Vinted) compared feature by feature (Table 1)", "A frank statement of what is and isn't new"])}
+{evidence(["Named alternatives (SOM Slack, Facebook Marketplace, Craigslist, Poshmark, Depop, Vinted) compared on the same nine needs (Table 1)", "A frank statement of what is and isn't new"])}
 
 <!-- ======================= 4. THE AGENTS ======================= -->
 {section(4, "The Agents", "Who does what, with which tools, and one real run")}
