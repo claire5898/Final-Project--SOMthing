@@ -1,30 +1,77 @@
 {
   "favorites": {
-    "u00": ["L019", "L034", "L044", "L006", "L010", "L050", "L004"]
+    "u00": [
+      "L019",
+      "L034",
+      "L044",
+      "L006",
+      "L010",
+      "L050",
+      "L004"
+    ]
   },
   "inquiries": [
     {
-      "id": "seed0001", "from_user_id": "u00", "to_user_id": "u06", "listing_id": "L019",
+      "id": "seed0001",
+      "from_user_id": "u00",
+      "to_user_id": "u06",
+      "listing_id": "L019",
       "message": "Hi Sam! Is the Outback still available? Could I take it for a test drive Saturday morning?",
-      "contact_pref": "SOMthing inbox", "sent_at": "2026-10-20T18:42", "simulated": true,
-      "reply": {"text": "Hi! Yes, it's still available. Saturday at 10am in Hamden works. I'll have the service records ready for you.", "at": "2026-10-20T20:15"}
+      "contact_pref": "SOMthing inbox",
+      "sent_at": "2026-10-20T18:42",
+      "simulated": true,
+      "reply": {
+        "text": "Hi! Yes, it's still available. Saturday at 10am in Hamden works. I'll have the service records ready for you.",
+        "at": "2026-10-20T20:15"
+      }
     },
     {
-      "id": "seed0002", "from_user_id": "u00", "to_user_id": "u01", "listing_id": "L034",
+      "id": "seed0002",
+      "from_user_id": "u00",
+      "to_user_id": "u01",
+      "listing_id": "L034",
       "message": "Hi Maya, could we do a one-hour session on DCF models next week? Happy to meet at Evans Hall.",
-      "contact_pref": "Yale email", "sent_at": "2026-10-21T09:05", "simulated": true,
-      "reply": {"text": "Absolutely! How about Tuesday at 7pm in Evans Hall? Bring your laptop and a model you're working on.", "at": "2026-10-21T12:30"}
+      "contact_pref": "Yale email",
+      "sent_at": "2026-10-21T09:05",
+      "simulated": true,
+      "reply": {
+        "text": "Absolutely! How about Tuesday at 7pm in Evans Hall? Bring your laptop and a model you're working on.",
+        "at": "2026-10-21T12:30"
+      }
     },
     {
-      "id": "seed0003", "from_user_id": "u00", "to_user_id": "u04", "listing_id": "L010",
+      "id": "seed0003",
+      "from_user_id": "u00",
+      "to_user_id": "u04",
+      "listing_id": "L010",
       "message": "Hi Jonah, would you take $25 for the floor lamp? I can pick it up this week.",
-      "contact_pref": "SOMthing inbox", "sent_at": "2026-10-22T16:20", "simulated": true,
-      "reply": {"text": "Deal at $25 if you can grab it by Friday evening. I'm on Orange St in East Rock.", "at": "2026-10-22T17:02"}
+      "contact_pref": "SOMthing inbox",
+      "sent_at": "2026-10-22T16:20",
+      "simulated": true,
+      "reply": {
+        "text": "Deal at $25 if you can grab it by Friday evening. I'm on Orange St in East Rock.",
+        "at": "2026-10-22T17:02"
+      }
     },
     {
-      "id": "seed0004", "from_user_id": "u00", "to_user_id": "u12", "listing_id": "L044",
+      "id": "seed0004",
+      "from_user_id": "u00",
+      "to_user_id": "u12",
+      "listing_id": "L044",
       "message": "Hi Omar! Do you have a headshot slot this Thursday at lunch?",
-      "contact_pref": "SOMthing inbox", "sent_at": "2026-10-23T11:48", "simulated": true
+      "contact_pref": "SOMthing inbox",
+      "sent_at": "2026-10-23T11:48",
+      "simulated": true
+    },
+    {
+      "id": "seed0005",
+      "from_user_id": "u00",
+      "to_user_id": "u03",
+      "listing_id": "L055",
+      "message": "yo is this legit?",
+      "contact_pref": "SOMthing inbox",
+      "sent_at": "2026-10-24T13:05",
+      "simulated": true
     }
   ]
 }
