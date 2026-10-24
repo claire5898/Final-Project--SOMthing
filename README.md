@@ -10,10 +10,13 @@ Two AI agents run on `gpt-6-luna` through the course Portkey key:
 |---|---|---|
 | **SOMbot** (shopping assistant) | Understands requests like *"a desk under $100"*, *"I need help with Excel"*, or *"desk + chair + lamp under $200 total"* and returns real listings with real prices and sellers | `search_listings`, `get_listing_details`, `check_bundle` |
 | **Listing Helper** | Turns a seller's rough notes into a complete listing, with a price based on similar SOMthing listings | `get_price_comps` |
+| **Safety guard** (small classifier) | Screens suspicious messages before either agent sees them (injection, privacy, scams, honor code) | none |
+
+**Why I built it.** I had a lot to sell and furniture to clear before moving, but Facebook Marketplace exposes your profile and location to strangers, and the SOM marketplace Slack channel is one long, unsearchable message chain where posting many items feels like spam. I also wanted a paid tutor, and the official route meant emailing AASL and waiting for limited slots. SOMthing is one trusted, searchable place for SOM students to trade items *and* skills.
 
 **Project write-up:** [`report.html`](report.html) (full report) and [`slides.html`](slides.html) (slide deck). Download either file and open it in a browser.
 
-> 🎓 **Classroom demo.** All people and listings are fictional. Sign-in is a mock screen (no Yale connection), messages are simulated, and SOMthing never handles payments.
+> 🎓 **Classroom demo.** All sellers and listings are fictional (the demo account is for the instructor). Sign-in is a mock screen (no Yale connection), messages are simulated, and SOMthing never handles payments.
 
 ---
 
@@ -62,6 +65,15 @@ Or click **Fill test credentials**. Do not enter real Yale credentials.
 
 To stop the app, press `Ctrl+C` in the terminal.
 
+### Troubleshooting
+| Problem | Fix |
+|---|---|
+| `Address already in use` / port 8000 busy | Run on another port: `PORT=8001 python run.py` (Windows PowerShell: `$env:PORT=8001; python run.py`), then open http://127.0.0.1:8001 |
+| Terminal says `AI key: NOT found` | Put a `.env` containing `PORTKEY_API_KEY=...` in this folder or the folder above it. Browsing still works without a key; only the AI features are disabled. |
+| `python3: command not found` or an old Python | Install Python 3.10+ from python.org, or use `python` instead of `python3` |
+| Browser didn't open | Open http://127.0.0.1:8000 manually |
+| Want a clean slate | Account menu → **Reset demo data** |
+
 ---
 
 ## What to try
@@ -76,7 +88,7 @@ To stop the app, press `Ctrl+C` in the terminal.
    - `A car under $5,000`: no match, so SOMbot says so honestly.
    - Open **"How I found these"** under any answer to see the agent's tool calls, and the ⚡ line for its token usage.
 5. **Sell:** **+ Sell** → type rough notes → **Draft my listing** → review → **Post listing**.
-6. **Save and contact:** tap the heart to save, or **Contact seller** to send a simulated inquiry, which appears in **Inbox**.
+6. **Save and contact:** tap the heart to save, or **Contact seller** to send a simulated inquiry, which appears in **Inbox**. Saved and Inbox come pre-filled with example items and conversations.
 7. **How SOMthing works** (account menu or footer): the agent diagram, what's new compared with existing apps, and costs.
 8. **AI & Safety dashboard** (account menu): live token usage per run, user feedback (thumbs up/down on SOMbot answers), guardrail events, held listings, and one-click attack demos.
 9. **Reset demo data** (account menu) returns everything to the starting state.
@@ -149,15 +161,20 @@ somthing/
   catalog.py            sections and categories
 static/                 website (plain HTML/CSS/JS, no build step)
 static/img/photos/      real listing photos (Pexels License / Creative Commons; see CREDITS.md)
-data/                   fictional users.json and listings.json
-tests/                  automated tests (fake model, no tokens)
-evals/                  live accuracy + token evaluation and saved results
+data/                   fictional users, listings, demo inbox/saved items, comparison table
+tests/                  55 automated tests (fake model, no tokens)
+evals/                  live accuracy, cost and red-team scripts + saved results
 scripts/                draws the navy-and-white illustrations (make_images.py, illustrations.py)
+docs/                   report/slide builders, report images, app screenshots
+report.html             final project report (self-contained)
+slides.html             slide deck (reveal.js)
+SAFETY.md               threat model: risks → defenses → tests
+CREDITS.md              photo credits and licenses
 ```
 
 **Photos:** listing photos are real stock photos from Pexels and Wikimedia Commons, used under their licenses and credited in `CREDITS.md` and on each listing page. They illustrate fictional listings.
 
-**Dataset:** the demo dataset is small (14 fictional users and 54 listings in `data/`), so there's no separate big dataset to switch to.
+**Dataset:** the demo dataset is small (14 users and 55 fictional listings in `data/`), so there's no separate big dataset to switch to.
 
 **Model:** `gpt-6-luna` only, through Portkey (`https://api.portkey.ai/v1`), using the OpenAI Responses API with function calling and structured JSON output.
 
