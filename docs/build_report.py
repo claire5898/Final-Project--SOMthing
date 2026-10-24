@@ -216,21 +216,22 @@ a { color: var(--navy2); }
 code { font: 8.8pt ui-monospace, Menlo, monospace; background: #f1f4f9; border: 1px solid #e3e9f2; border-radius: 4px; padding: 0 4px; }
 .dim { color: var(--muted); font-size: 8.5pt; }
 .cover { display: flex; flex-direction: column; }
-.cover-band { background: linear-gradient(135deg, #0b2a55, #00356b 60%, #1f4e8c); color: #fff; border-radius: 16px; padding: 26px 30px 22px; }
+.cover-band { background: linear-gradient(135deg, #0b2a55, #00356b 60%, #1f4e8c); color: #fff; border-radius: 16px; padding: 20px 26px 18px; }
 .cover-kicker { font-size: 9pt; letter-spacing: .14em; text-transform: uppercase; color: #a9c4ea; }
-.cover h1 { font-size: 40pt; margin: 6px 0 4px; letter-spacing: -0.03em; color: #fff; }
+.cover h1 { font-size: 34pt; margin: 2px 0 2px; letter-spacing: -0.03em; color: #fff; }
 .cover h1 span { color: #a9c4ea; }
 .cover .tagline { font-size: 12.5pt; color: #dbe6f6; margin: 0 0 12px; max-width: 5.6in; }
 .meta { display: grid; grid-template-columns: 1.1in 1fr; gap: 4px 12px; font-size: 9.6pt; }
 .meta div:nth-child(odd) { color: #a9c4ea; font-weight: 600; } .meta a { color: #fff; }
-.oneliner { margin-top: 16px; background: rgba(255,255,255,.12); border-left: 3px solid #a9c4ea; border-radius: 8px; padding: 10px 14px; font-size: 10.5pt; }
+.oneliner { margin-top: 12px; background: rgba(255,255,255,.12); border-left: 3px solid #a9c4ea; border-radius: 8px; padding: 10px 14px; font-size: 10.5pt; }
 .sec1 { margin: 0 0 8px; font-size: 8.5pt; letter-spacing: .14em; text-transform: uppercase; color: var(--muted); font-weight: 700; }
 .exec { margin-top: 12px; } .exec h3 { margin-top: 0; }
-.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 12px 0 16px; }
+.kpis { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin: 8px 0 10px; }
 .kpi { border: 1px solid var(--line); border-top: 3px solid var(--navy); border-radius: 8px; padding: 9px 11px; }
-.kpi b { display: block; font-size: 17pt; color: var(--navy); line-height: 1.15; } .kpi span { font-size: 8.4pt; color: var(--muted); }
+.kpi b { display: block; font-size: 15pt; color: var(--navy); line-height: 1.15; } .kpi span { font-size: 8.4pt; color: var(--muted); }
 .toc { margin-top: 10px; border-top: 1px solid var(--line); padding-top: 8px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 2px 10px; font-size: 9pt; }
 .toc div { break-inside: avoid; padding: 2px 0; } .toc b { color: var(--navy); display: inline-block; width: 26px; }
+.cover .sec { margin-top: 0; }
 .sec { display: flex; gap: 14px; align-items: center; margin: 34px 0 12px; padding-bottom: 8px; border-bottom: 2px solid var(--navy); break-after: avoid; page-break-after: avoid; }
 .sec-num { font: 800 22pt/1 -apple-system, Helvetica, Arial, sans-serif; color: #fff; background: var(--navy); border-radius: 10px; padding: 8px 10px; min-width: 52px; text-align: center; }
 .sec-kicker { font-size: 8pt; letter-spacing: .13em; text-transform: uppercase; color: var(--muted); }
@@ -276,7 +277,7 @@ html = f"""<!doctype html>
 
 <!-- ======================= COVER + 1. TITLE AND LINKS ======================= -->
 <section class="cover">
-  <div class="sec1">1. Title and links</div>
+  {section(1, "Title and Links", "Project, author, links and what the app does")}
   <div class="cover-band">
     <div class="cover-kicker">AI Foundations for Managers · Final Project Report</div>
     <h1>SOM<span>thing</span></h1>
@@ -291,7 +292,7 @@ html = f"""<!doctype html>
   </div>
 
   <div class="exec">
-    <h3>Executive summary</h3>
+    <h3>Executive Summary</h3>
     <p>SOM students have no good place to buy and sell with each other. The SOM Slack marketplace channel is one long message chain, Facebook Marketplace exposes your profile to strangers, and finding a tutor means waiting for limited official slots. SOMthing is a community-only marketplace for <b>items and skills</b>, with two <code>gpt-6-luna</code> agents. <b>SOMbot</b> answers buyers from real listings, building bundles that code adds up and verifies. The <b>Listing Helper</b> drafts listings priced from comparable community listings. Eight layers of safety checks wrap both agents.</p>
     <div class="kpis">
       <div class="kpi"><b>10 / 10</b><span>shopping requests answered correctly (live evaluation)</span></div>
@@ -302,8 +303,8 @@ html = f"""<!doctype html>
   </div>
 
   <div class="toc">
-    <div><b>1</b> Title and links</div><div><b>2</b> Motivation</div><div><b>3</b> What is new here</div><div><b>4</b> The agents</div>
-    <div><b>5</b> Tokenomics</div><div><b>6</b> Safety</div><div><b>7</b> Impact</div><div><b>8</b> Limits and next steps</div>
+    <div><b>1</b> Title and Links</div><div><b>2</b> Motivation</div><div><b>3</b> What Is New Here</div><div><b>4</b> The Agents</div>
+    <div><b>5</b> Tokenomics</div><div><b>6</b> Safety</div><div><b>7</b> Impact</div><div><b>8</b> Limits and Next Steps</div>
   </div>
 </section>
 
@@ -327,7 +328,7 @@ html = f"""<!doctype html>
 {evidence(["A real person behind the problem: the author's own selling and tutoring experience", "Concrete costs today: time, privacy, waste and missed help"])}
 
 <!-- ======================= 3. WHAT IS NEW ======================= -->
-{section(3, "What is new here", "What already exists, and what SOMthing does differently")}
+{section(3, "What Is New Here", "What already exists, and what SOMthing does differently")}
 <p>I compared SOMthing with what SOM students use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, Poshmark, ChatGPT, and the official AASL tutoring process. Each is useful for something, but none combines a <i>trusted community</i>, <i>items and skills in one place</i>, and <i>an AI that answers only from real local listings</i>.</p>
 {figure("home", "SOMthing's home page, signed in as the demo account. Physical Things and Skills &amp; Services sit side by side, with category shortcuts, fresh listings and the “Ask SOMbot” assistant.")}
 {table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark", "ChatGPT"], comparison_rows, "keep")}
@@ -342,21 +343,21 @@ html = f"""<!doctype html>
 {evidence(["Six named alternatives compared feature by feature (Table 1)", "A frank statement of what is and isn't new"])}
 
 <!-- ======================= 4. THE AGENTS ======================= -->
-{section(4, "The agents", "Who does what, with which tools, and one real run")}
+{section(4, "The Agents", "Who does what, with which tools, and one real run")}
 <p>SOMthing uses <b>two AI agents</b> and <b>one small AI safety guard</b>, all running on <code>gpt-6-luna</code> through the course Portkey key. Everything else (browsing, filters, search ranking, bundle math and the safety rules) is ordinary code. This is deliberate: the AI handles only the parts that need language understanding, and code handles everything that must be exact.</p>
 {svg_figure(ARCH_SVG, "System architecture. Buyers and sellers each go through the same input checks and safety guard. Each agent can only reach the listings database through read-only tools. SOMbot's answers pass output checks before the buyer sees them, and the Listing Helper only drafts: a person reviews and posts, and the policy filter decides what gets published.")}
 {table("The three AI components.", ["Agent", "Job", "Input", "Output"], agents_rows, "keep")}
 {table("The tools the agents can call. All are read-only code.", ["Tool", "Used by", "Inputs", "Returns"], tools_rows, "keep")}
-<h3>How they are organized, and why</h3>
+<h3>How the Agents Are Organized, and Why</h3>
 <ul>
   <li><b>Two specialists, not a chain.</b> SOMbot serves buyers and the Listing Helper serves sellers; they never pass work to each other. The safety guard stands in front of both. This keeps every run short (2.3 model calls on average) and easy to audit.</li>
   <li><b>Tools are the source of truth.</b> The model chooses <i>what</i> to search; code decides <i>what exists</i> and <i>what it costs</i>.</li>
   <li><b>Least privilege.</b> The AI can only read. Posting, saving and messaging always need a person to click.</li>
   <li><b>A tiered guard.</b> A cheap pattern check decides when to call the guard, so ordinary requests pay nothing extra for it.</li>
 </ul>
-<h3>Model choice</h3>
+<h3>Model Choice</h3>
 <p><code>gpt-6-luna</code> is the model the course key allows, and it suits the job well: it is inexpensive (an estimated $0.10 per million input tokens and $0.50 per million output tokens) and supports both tool calling and strict JSON output. The app calls it through OpenAI's Responses API, since the older Chat Completions API does not allow tools with this model. At <b>low reasoning effort</b> it answered all 10 evaluation requests correctly, and medium effort did not improve accuracy (Section 5).</p>
-<h3>One real run, step by step</h3>
+<h3>One Real Run, Step by Step</h3>
 <p>A real run from the app, logged at 12:23 on October 24. The request: <i>“I'm moving in: I need a desk, a chair and a lamp for under $200 total.”</i></p>
 <div class="side">
   <ol class="steps">
@@ -379,7 +380,7 @@ html = f"""<!doctype html>
 <p>A typical SOMbot answer uses about <b>3,100 input tokens (80% cached) and 150 output tokens</b>, which costs about <b>${c_opt:.5f}</b>. Other measured runs: a Listing Helper draft costs about ${c_helper:.5f} (1,914 in, 162 out), a safety-guard check about ${c_guard:.6f} (287 in, 36 out), and a regex-blocked attack <b>$0</b>, because the model is never called.</p>
 {table("Monthly cost per user and at scale.", ["Scenario", "Assumption", "Monthly AI cost"], scale_rows, "keep")}
 <p>For an organization, the AI cost is close to negligible: a whole-school deployment would spend more on web hosting than on tokens, and the daily budget cap puts a hard ceiling on the worst case.</p>
-<h3>What I did to keep cost down</h3>
+<h3>What I Did to Keep Cost Down</h3>
 <ol>
   <li><b>No AI for ordinary browsing.</b> Search, filters, categories and listing pages are plain code.</li>
   <li><b>Compact tool results.</b> At most 6 listings per search, with descriptions trimmed to 140 characters.</li>
@@ -389,7 +390,7 @@ html = f"""<!doctype html>
   <li><b>A tiered guard.</b> The extra safety model runs only on suspicious messages, and regex blocks cost $0.</li>
   <li><b>Hard caps.</b> 900 output tokens per call, 4 tool rounds per question, 60k tokens per session and 1.5M per day.</li>
 </ol>
-<h3>Did cost-cutting hurt quality?</h3>
+<h3>Did Cost-Cutting Hurt Quality?</h3>
 {table("Optimized vs. unoptimized settings across two evaluation runs (10 requests each).", ["Run", "Settings", "Accuracy", "Avg input", "Avg cached", "Avg output", "Avg time", "Cost / answer"], effect_rows, "keep")}
 <p><b>No measurable quality loss.</b> Both settings answered all 10 requests correctly in both runs. (“Correct” means the right listings were shown, forbidden ones never appeared, “no match” was reported honestly, and bundles stayed within budget.)</p>
 <ul>
@@ -404,14 +405,14 @@ html = f"""<!doctype html>
 {section(6, "Safety", "What could go wrong, what I built, and proof that it works")}
 <p>A marketplace that feeds member-written listings to an AI faces three kinds of risk: <b>attacks</b> (prompt injection, jailbreaks, privacy probing, scams), <b>agent malfunction</b> (invented listings or prices, runaway loops, the AI taking actions on its own) and <b>overspending</b>. SOMthing uses eight layers of defense, so that if one layer misses something, the next one catches it. Several build on techniques from earlier homeworks: treating outside content as untrusted, pattern screening, read-only tools, human approval for actions, step and token budgets, and audit logs. Others are new for this project: an AI safety guard, personal-information redaction, a canary token, marked untrusted text and output filtering.</p>
 {table("Risks that matter for SOMthing and the defenses built for each.", ["Risk", "What could happen", "Defenses built", "Evidence"], risk_rows)}
-<h3>Defenses working in the real app</h3>
+<h3>Defenses Working in the Real App</h3>
 <div class="two">
   {figure("safety_blocks", "Two attacks blocked live. A direct injection is stopped by the regex screen before any AI call (0 tokens). A role-play jailbreak is stopped by the LLM guard (287 input tokens); SOMbot never sees it.", "tall")}
   {figure("safety_pii", "A request containing a phone number. The number is removed before the AI and the logs see it (the log in Figure 5 shows “[phone removed]”), and the user is told.", "tall")}
 </div>
 {figure("held", "A seller tries to post a listing containing hidden instructions for the AI and a Venmo-deposit demand. It is held for review: hidden from everyone else and never sent to the AI.")}
 {figure("policy_reject", "A listing that sells midterm answers and includes a phone number is rejected, with a clear explanation (honor code; no contact info).", "narrow")}
-<h3>Tested: 55 automated tests and a live red team</h3>
+<h3>Tested: 55 Automated Tests and a Live Red Team</h3>
 <p><b>Automated tests</b> (<code>python -m pytest</code>: 55 passing, no AI tokens). A scripted fake model reproduces each attack or malfunction and checks that it's stopped. Examples: <code>test_invented_listing_ids_are_removed</code>, <code>test_runaway_loop_is_stopped</code>, <code>test_obfuscated_injections_are_caught</code>, <code>test_llm_guard_fails_closed</code>, <code>test_canary_leak_is_blocked</code>, <code>test_pii_never_reaches_the_model</code>, <code>test_scam_advice_in_answer_is_replaced</code>, <code>test_token_budget_blocks_without_calling_model</code>, <code>test_ai_tools_are_read_only</code>.</p>
 <p><b>Live red team</b> (<code>python evals/red_team.py</code>) sends 15 attacks through the real model. The first run exposed genuine weaknesses, which I fixed and then re-tested:</p>
 {table("Live red-team results before and after hardening.", ["Attack", "Run 1 (before fixes)", "Run 2 (after hardening)", "Tokens"], rt_rows)}
@@ -431,8 +432,8 @@ html = f"""<!doctype html>
 {evidence(["Numbers with sources, measured where possible and labeled where estimated (Table 9)", "The author as a real user with the problem; outside-user test noted honestly"])}
 
 <!-- ======================= 8. LIMITS + NEXT STEPS ======================= -->
-{section(8, "Limits and next steps", "What doesn't work yet, and the next month")}
-<h3>What doesn't work yet</h3>
+{section(8, "Limits and Next Steps", "What doesn't work yet, and the next month")}
+<h3>What Doesn't Work Yet</h3>
 <ul>
   <li><b>It's a classroom demo.</b> Sellers and listings are fictional (the photos are real stock photos, credited in the repo). Sign-in is a mock “Yale ID” screen, messaging is simulated, and payments are left out by design. It runs locally rather than online.</li>
   <li><b>No outside user test yet</b>, so the time savings are estimates.</li>
@@ -440,7 +441,7 @@ html = f"""<!doctype html>
   <li><b>Small dataset.</b> With 55 listings, price comparisons are thin, and search is keyword-based rather than semantic.</li>
   <li><b>Costs are estimates.</b> Token counts are measured, but prices come from public trackers, not course billing.</li>
 </ul>
-<h3>With another month I would</h3>
+<h3>With Another Month, I Would</h3>
 <ol>
   <li><b>Run a pilot</b> with one SOM class section. Measure time-to-purchase against the Slack channel, and collect thumbs-up rates and quotes.</li>
   <li><b>Add real Yale sign-in (CAS/SSO)</b>, real in-app messaging with notifications, and host it online.</li>
