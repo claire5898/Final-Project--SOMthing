@@ -70,48 +70,44 @@ c_bundle = cost(6186, 3544, 264)
 per_user = 30 * c_opt + 4 * c_helper + 3 * c_guard
 
 ARCH_SVG = """
-<svg viewBox="0 0 960 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SOMthing system architecture">
+<svg viewBox="0 0 820 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="SOMthing system architecture">
  <defs>
-  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e8c"/></marker>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#1f4e8c"/></marker>
   <style>
-   .bx{fill:#fff;stroke:#c7d3e6;stroke-width:1.3} .ai{fill:#00356b;stroke:#00356b} .ck{fill:#eef3fa;stroke:#b9cbe5}
-   .tl{fill:#f6f8fc;stroke:#c7d3e6;stroke-dasharray:4 3} .db{fill:#e6edf7;stroke:#9fb4d6}
-   .t{font:600 13px -apple-system,Helvetica,Arial,sans-serif;fill:#0b2a55} .s{font:11px -apple-system,Helvetica,Arial,sans-serif;fill:#5a6b85}
-   .tw{fill:#fff} .sw{fill:#c9d8ee} .m{font:600 11.5px ui-monospace,Menlo,monospace;fill:#0b2a55}
-   .ln{stroke:#1f4e8c;stroke-width:1.6;fill:none} .lb{font:italic 10.5px -apple-system,Helvetica,Arial,sans-serif;fill:#1f4e8c}
+   .bx{fill:#fff;stroke:#c3d0e4;stroke-width:1.4} .ai{fill:#00356b} .ck{fill:#eef3fa;stroke:#b9cbe5;stroke-width:1.4}
+   .tl{fill:#f7f9fc;stroke:#9fb4d6;stroke-width:1.2;stroke-dasharray:5 3} .db{fill:#dfe8f5;stroke:#8fa8cf;stroke-width:1.4}
+   .h{font:700 13.5px -apple-system,Helvetica,Arial,sans-serif;fill:#0b2a55} .s{font:11.5px -apple-system,Helvetica,Arial,sans-serif;fill:#53647e}
+   .hw{fill:#fff} .sw{fill:#c9d8ee} .m{font:600 11.5px ui-monospace,Menlo,monospace;fill:#0b2a55}
+   .ln{stroke:#1f4e8c;stroke-width:1.7;fill:none} .lane{font:700 10.5px -apple-system,Helvetica,Arial,sans-serif;letter-spacing:.12em;fill:#8a9bb5}
   </style>
  </defs>
- <rect class="bx" x="15" y="40" width="160" height="62" rx="10"/><text class="t" x="28" y="64">Buyer (SOM member)</text><text class="s" x="28" y="84">“desk+chair+lamp &lt; $200”</text>
- <rect class="bx" x="15" y="262" width="160" height="62" rx="10"/><text class="t" x="28" y="286">Seller (SOM member)</text><text class="s" x="28" y="306">rough notes about an item</text>
- <rect class="ck" x="205" y="40" width="170" height="62" rx="10"/><text class="t" x="218" y="64">Input checks</text><text class="s" x="218" y="84">length · injection · PII redaction</text>
- <rect class="ck" x="205" y="132" width="170" height="62" rx="10"/><text class="t" x="218" y="156">Safety guard (LLM)</text><text class="s" x="218" y="176">only if suspicious · fails closed</text>
- <rect class="ai" x="410" y="40" width="175" height="62" rx="10"/><text class="t tw" x="424" y="64">SOMbot agent</text><text class="s sw" x="424" y="84">gpt-6-luna · plans + answers</text>
- <rect class="ck" x="410" y="132" width="175" height="62" rx="10"/><text class="t" x="424" y="156">Output checks</text><text class="s" x="424" y="176">real IDs · prices · canary · filters</text>
- <rect class="ai" x="410" y="262" width="175" height="62" rx="10"/><text class="t tw" x="424" y="286">Listing Helper agent</text><text class="s sw" x="424" y="306">gpt-6-luna · drafts listings</text>
- <rect class="tl" x="620" y="18" width="180" height="34" rx="8"/><text class="m" x="632" y="40">search_listings</text>
- <rect class="tl" x="620" y="60" width="180" height="34" rx="8"/><text class="m" x="632" y="82">get_listing_details</text>
- <rect class="tl" x="620" y="102" width="180" height="34" rx="8"/><text class="m" x="632" y="124">check_bundle</text>
- <rect class="tl" x="620" y="276" width="180" height="34" rx="8"/><text class="m" x="632" y="298">get_price_comps</text>
- <text class="lb" x="622" y="152">read-only tools (code)</text>
- <rect class="db" x="835" y="150" width="110" height="96" rx="14"/><text class="t" x="851" y="182">Listings</text><text class="t" x="851" y="199">database</text><text class="s" x="851" y="222">55 listings</text>
- <rect class="bx" x="205" y="352" width="170" height="52" rx="10"/><text class="t" x="218" y="375">Human reviews + posts</text><text class="s" x="218" y="393">the AI never posts</text>
- <rect class="ck" x="410" y="352" width="175" height="52" rx="10"/><text class="t" x="424" y="375">Policy + scam filter</text><text class="s" x="424" y="393">reject or hold for review</text>
- <path class="ln" d="M175,71 L203,71" marker-end="url(#ah)"/>
- <path class="ln" d="M290,102 L290,130" marker-end="url(#ah)"/>
- <path class="ln" d="M375,71 L408,71" marker-end="url(#ah)"/>
- <path class="ln" d="M375,163 Q392,163 408,92" marker-end="url(#ah)"/><text class="lb" x="378" y="128">allow</text>
- <path class="ln" d="M585,58 L618,35" marker-end="url(#ah)" marker-start="url(#ah)"/>
- <path class="ln" d="M585,71 L618,77" marker-end="url(#ah)" marker-start="url(#ah)"/>
- <path class="ln" d="M585,84 L618,119" marker-end="url(#ah)" marker-start="url(#ah)"/>
- <path class="ln" d="M800,35 L833,170" marker-end="url(#ah)"/><path class="ln" d="M800,77 L833,185" marker-end="url(#ah)"/><path class="ln" d="M800,119 L833,200" marker-end="url(#ah)"/>
- <path class="ln" d="M497,102 L497,130" marker-end="url(#ah)"/>
- <path class="ln" d="M410,175 L95,175 L95,104" marker-end="url(#ah)"/><text class="lb" x="120" y="192">answer + verified cards</text>
- <path class="ln" d="M175,293 L408,293" marker-end="url(#ah)"/><text class="lb" x="210" y="286">notes (same input checks + guard)</text>
- <path class="ln" d="M585,293 L618,293" marker-end="url(#ah)" marker-start="url(#ah)"/>
- <path class="ln" d="M800,293 L833,240" marker-end="url(#ah)"/>
- <path class="ln" d="M470,324 L470,338 L290,338 L290,350" marker-end="url(#ah)"/><text class="lb" x="300" y="333">draft</text>
- <path class="ln" d="M375,378 L408,378" marker-end="url(#ah)"/>
- <path class="ln" d="M585,378 L890,378 L890,248" marker-end="url(#ah)"/><text class="lb" x="640" y="372">approved listings only</text>
+ <text class="lane" x="10" y="14">BUYER FLOW</text>
+ <rect class="bx" x="10" y="22" width="120" height="64" rx="10"/><text class="h" x="22" y="48">Buyer</text><text class="s" x="22" y="68">asks in plain words</text>
+ <rect class="ck" x="160" y="22" width="140" height="64" rx="10"/><text class="h" x="172" y="48">Input checks</text><text class="s" x="172" y="68">+ safety guard if needed</text>
+ <rect class="ai" x="330" y="22" width="140" height="64" rx="10"/><text class="h hw" x="342" y="48">SOMbot</text><text class="s sw" x="342" y="68">gpt-6-luna agent</text>
+ <rect class="ck" x="500" y="22" width="140" height="64" rx="10"/><text class="h" x="512" y="48">Output checks</text><text class="s" x="512" y="68">real IDs · prices · leaks</text>
+ <rect class="bx" x="670" y="22" width="140" height="64" rx="10"/><text class="h" x="682" y="48">Verified answer</text><text class="s" x="682" y="68">cards from the database</text>
+ <path class="ln" d="M130,54 L158,54" marker-end="url(#ah)"/><path class="ln" d="M300,54 L328,54" marker-end="url(#ah)"/>
+ <path class="ln" d="M470,54 L498,54" marker-end="url(#ah)"/><path class="ln" d="M640,54 L668,54" marker-end="url(#ah)"/>
+ <rect class="tl" x="300" y="112" width="200" height="72" rx="9"/>
+ <text class="m" x="314" y="134">search_listings</text><text class="m" x="314" y="153">get_listing_details</text><text class="m" x="314" y="172">check_bundle</text>
+ <path class="ln" d="M400,86 L400,110" marker-end="url(#ah)" marker-start="url(#ah)"/>
+ <rect class="db" x="160" y="204" width="650" height="44" rx="12"/>
+ <text class="h" x="178" y="231">Listings database</text><text class="s" x="320" y="231">55 listings · the single source of truth for what exists and what it costs</text>
+ <path class="ln" d="M400,184 L400,202" marker-end="url(#ah)" marker-start="url(#ah)"/>
+ <text class="s" x="512" y="150" style="font-style:italic">read-only tools (plain code)</text>
+ <rect class="tl" x="300" y="268" width="200" height="40" rx="9"/><text class="m" x="314" y="293">get_price_comps</text>
+ <path class="ln" d="M400,250 L400,266" marker-end="url(#ah)" marker-start="url(#ah)"/>
+ <text class="lane" x="10" y="328">SELLER FLOW</text>
+ <rect class="bx" x="10" y="336" width="120" height="64" rx="10"/><text class="h" x="22" y="362">Seller</text><text class="s" x="22" y="382">types rough notes</text>
+ <rect class="ck" x="160" y="336" width="140" height="64" rx="10"/><text class="h" x="172" y="362">Input checks</text><text class="s" x="172" y="382">+ safety guard if needed</text>
+ <rect class="ai" x="330" y="336" width="140" height="64" rx="10"/><text class="h hw" x="342" y="362">Listing Helper</text><text class="s sw" x="342" y="382">gpt-6-luna agent</text>
+ <rect class="bx" x="500" y="336" width="140" height="64" rx="10"/><text class="h" x="512" y="362">Human reviews</text><text class="s" x="512" y="382">and clicks Post</text>
+ <rect class="ck" x="670" y="336" width="140" height="64" rx="10"/><text class="h" x="682" y="362">Policy + scam filter</text><text class="s" x="682" y="382">reject, hold or publish</text>
+ <path class="ln" d="M130,368 L158,368" marker-end="url(#ah)"/><path class="ln" d="M300,368 L328,368" marker-end="url(#ah)"/>
+ <path class="ln" d="M470,368 L498,368" marker-end="url(#ah)"/><path class="ln" d="M640,368 L668,368" marker-end="url(#ah)"/>
+ <path class="ln" d="M400,308 L400,334" marker-end="url(#ah)" marker-start="url(#ah)"/>
+ <path class="ln" d="M740,336 L740,250" marker-end="url(#ah)"/>
 </svg>"""
 
 # ---------- tables ----------
@@ -179,9 +175,17 @@ risk_rows = """
 <tr><td>Web attacks and secrets</td><td>XSS, fake uploads, password guessing, key leaks</td><td>HTML escaping, CSP headers, magic-byte image checks, 5 failed sign-ins/min. The key stays server-side; <code>.env</code> is gitignored (verified: no key in git history).</td><td>tests</td></tr>
 """
 
+RT_LABEL = {
+    "blocked by prompt_injection": "Blocked by input filter",
+    "blocked by llm_guard": "Blocked by safety guard",
+    "blocked by input_too_long": "Blocked (message too long)",
+    "answered (no refusal)": "Answered without refusing",
+    "answered safely": "Answered safely",
+    "model refused": "Declined by SOMbot",
+}
 rt_rows = "".join(
-    f"<tr><td>{i + 1}. {a['attack']}</td><td class='{'ok' if a['pass'] else 'bad'}'>{'✓' if a['pass'] else '✗'} {a['result']}</td>"
-    f"<td class='ok'>✓ {b['result']}</td><td>{b['tokens']:,}</td></tr>"
+    f"<tr><td>{i + 1}. {a['attack']}</td><td class='{'ok' if a['pass'] else 'bad'}'>{'✓' if a['pass'] else '✗'} {RT_LABEL.get(a['result'], a['result'])}</td>"
+    f"<td class='ok'>✓ {RT_LABEL.get(b['result'], b['result'])}</td><td>{b['tokens']:,}</td></tr>"
     for i, (a, b) in enumerate(zip(rt1["rows"], rt2["rows"]))
 )
 
@@ -245,6 +249,7 @@ td.ok { color: var(--green); font-weight: 600; } td.bad { color: var(--red); fon
 figure { margin: 12px 0 16px; text-align: center; break-inside: avoid; page-break-inside: avoid; }
 figure img { max-width: 100%; max-height: 3.3in; border: 1px solid var(--line); border-radius: 8px; box-shadow: 0 2px 8px rgba(11,42,85,.08); }
 figure.tall img { max-height: 4.4in; }
+figure.narrow img { max-width: 62%; }
 figure.diagram svg { width: 100%; height: auto; border: 1px solid var(--line); border-radius: 10px; background: #fbfcfe; padding: 6px; }
 figcaption { font-size: 8.6pt; color: var(--muted); margin-top: 6px; text-align: left; line-height: 1.45; }
 .two { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
@@ -323,43 +328,43 @@ html = f"""<!doctype html>
 
 <!-- ======================= 3. WHAT IS NEW ======================= -->
 {section(3, "What is new here", "What already exists, and what SOMthing does differently")}
-<p>I compared SOMthing to what SOM students actually use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, Poshmark, ChatGPT, and the official AASL tutoring process. These are useful tools, so the point isn't that they are bad. It's that none of them combines a <i>trusted community</i>, <i>skills and things in one place</i>, and <i>an AI that can only answer from real local listings</i>.</p>
-{table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark", "ChatGPT"], comparison_rows)}
-<p class="dim">Based on how each product generally works today, as I understand it. The point is the combination, not that any single feature is unique.</p>
-<p><b>Tutoring today vs. SOMthing.</b> The official route (email AASL, wait to be matched, fit into limited slots) is valuable but slow and inflexible. SOMthing doesn't replace it. It adds a peer option: browse classmates who list tutoring, Excel or coding help, with their experience and hourly price, and message them directly.</p>
-<p><b>Honest take.</b> A campus marketplace on its own isn't new. What's new is the agent design and the guardrails around it:</p>
-<ul>
-  <li><b>An assistant that is grounded and verified.</b> SOMbot can only show listings its search tool returned. Prices come from the database, and bundle totals are added by code, never by the model. ChatGPT can't do this, because it has never seen SOMthing's listings.</li>
-  <li><b>The seller side is AI-assisted too.</b> Rough notes become a clean listing with a price grounded in comparable community listings.</li>
-  <li><b>Community-specific safety.</b> Honor-code rules (no selling exam answers), scam holds and a ban on contact info in listings are designed for a school marketplace.</li>
-</ul>
+<p>I compared SOMthing with what SOM students use today: the SOM marketplace Slack channel, Facebook Marketplace, Craigslist, Poshmark, ChatGPT, and the official AASL tutoring process. Each is useful for something, but none combines a <i>trusted community</i>, <i>items and skills in one place</i>, and <i>an AI that answers only from real local listings</i>.</p>
 {figure("home", "SOMthing's home page, signed in as the demo account. Physical Things and Skills &amp; Services sit side by side, with category shortcuts, fresh listings and the “Ask SOMbot” assistant.")}
+{table("SOMthing compared with the alternatives SOM students use today.", ["What students need", "SOMthing", "SOM Slack channel", "Facebook Marketplace", "Craigslist", "Poshmark", "ChatGPT"], comparison_rows, "keep")}
+<p class="dim">Based on how each product generally works today, as I understand it. The point is the combination, not that any single feature is unique.</p>
+<p><b>Tutoring today vs. SOMthing.</b> The official route (email AASL, wait to be matched, fit into limited slots) is valuable but slow and inflexible. SOMthing complements it with a peer option: students browse classmates who offer tutoring, Excel or coding help, compare experience and hourly rates, and message one directly.</p>
+<p><b>What is genuinely new.</b> A campus marketplace by itself is not a new idea. The novelty is in how the agents are designed and safeguarded:</p>
+<ul>
+  <li><b>A grounded, verified assistant.</b> SOMbot can show only listings that its search tool returned. Prices come from the database, and bundle totals are added up by code, never by the model. A general chatbot like ChatGPT can't do this, because it has never seen SOMthing's listings.</li>
+  <li><b>AI help for sellers, too.</b> Rough notes become a clean listing, priced against comparable listings in the same community.</li>
+  <li><b>Safety designed for a school.</b> Honor-code rules (no selling exam answers), scam holds and a ban on contact info in listings are built in from the start.</li>
+</ul>
 {evidence(["Six named alternatives compared feature by feature (Table 1)", "A frank statement of what is and isn't new"])}
 
 <!-- ======================= 4. THE AGENTS ======================= -->
 {section(4, "The agents", "Who does what, with which tools, and one real run")}
-<p>SOMthing uses <b>two AI agents</b> and <b>one small AI safety guard</b>, all running on <code>gpt-6-luna</code> through the course Portkey key. Everything else, including browsing, filters, search ranking, bundle math and the safety rules, is ordinary code. That's deliberate: the AI only does the parts that need language understanding.</p>
-{svg_figure(ARCH_SVG, "System architecture. Both agents sit behind the same input checks and safety guard. Their tools are read-only code over the listings database. SOMbot's answers pass output checks before the buyer sees verified cards. The Listing Helper only drafts: a human reviews and posts, and the policy filter decides what reaches the database.")}
+<p>SOMthing uses <b>two AI agents</b> and <b>one small AI safety guard</b>, all running on <code>gpt-6-luna</code> through the course Portkey key. Everything else (browsing, filters, search ranking, bundle math and the safety rules) is ordinary code. This is deliberate: the AI handles only the parts that need language understanding, and code handles everything that must be exact.</p>
+{svg_figure(ARCH_SVG, "System architecture. Buyers and sellers each go through the same input checks and safety guard. Each agent can only reach the listings database through read-only tools. SOMbot's answers pass output checks before the buyer sees them, and the Listing Helper only drafts: a person reviews and posts, and the policy filter decides what gets published.")}
 {table("The three AI components.", ["Agent", "Job", "Input", "Output"], agents_rows, "keep")}
 {table("The tools the agents can call. All are read-only code.", ["Tool", "Used by", "Inputs", "Returns"], tools_rows, "keep")}
 <h3>How they are organized, and why</h3>
 <ul>
-  <li><b>Specialists, not a chain.</b> SOMbot and the Listing Helper serve different users (buyers and sellers) and never hand work to each other. The guard is a gatekeeper in front of both. Every run stays short (2.3 model calls on average) and easy to audit.</li>
+  <li><b>Two specialists, not a chain.</b> SOMbot serves buyers and the Listing Helper serves sellers; they never pass work to each other. The safety guard stands in front of both. This keeps every run short (2.3 model calls on average) and easy to audit.</li>
   <li><b>Tools are the source of truth.</b> The model chooses <i>what</i> to search; code decides <i>what exists</i> and <i>what it costs</i>.</li>
   <li><b>Least privilege.</b> The AI can only read. Posting, saving and messaging always need a person to click.</li>
-  <li><b>A tiered guard.</b> A cheap regex net decides when to call the guard, so ordinary requests pay nothing extra for it.</li>
+  <li><b>A tiered guard.</b> A cheap pattern check decides when to call the guard, so ordinary requests pay nothing extra for it.</li>
 </ul>
 <h3>Model choice</h3>
-<p><code>gpt-6-luna</code> is the model the course key allows, and it fits the job: it's inexpensive (estimated $0.10 per million input tokens and $0.50 per million output), and it supports function calling and strict JSON output. I use OpenAI's Responses API, because Chat Completions rejects tools for this model. At <b>low reasoning effort</b> it scored 10/10 on my evaluation, and medium effort didn't improve accuracy (Section 5).</p>
+<p><code>gpt-6-luna</code> is the model the course key allows, and it suits the job well: it is inexpensive (an estimated $0.10 per million input tokens and $0.50 per million output tokens) and supports both tool calling and strict JSON output. The app calls it through OpenAI's Responses API, since the older Chat Completions API does not allow tools with this model. At <b>low reasoning effort</b> it answered all 10 evaluation requests correctly, and medium effort did not improve accuracy (Section 5).</p>
 <h3>One real run, step by step</h3>
 <p>A real run from the app, logged at 12:23 on October 24. The request: <i>“I'm moving in: I need a desk, a chair and a lamp for under $200 total.”</i></p>
 <div class="side">
   <ol class="steps">
-    <li><b>Input checks.</b> Short message, no injection patterns, no personal info. It isn't suspicious, so the guard is skipped (0 extra tokens).</li>
-    <li><b>SOMbot plans (model call 1).</b> It requests three searches at once: <code>search_listings("desk", furniture, ≤$200)</code> → 4 results, <code>("chair", furniture, ≤$200)</code> → 3, and <code>("lamp", household, ≤$200)</code> → 2.</li>
+    <li><b>Input checks.</b> The message is short, contains no injection patterns or personal information, and is not suspicious, so the guard is skipped (0 extra tokens).</li>
+    <li><b>SOMbot plans (model call 1).</b> It requests three searches in parallel: <code>search_listings("desk", furniture, ≤$200)</code> → 4 results, <code>("chair", furniture, ≤$200)</code> → 3, and <code>("lamp", household, ≤$200)</code> → 2.</li>
     <li><b>Picks and verifies (call 2).</b> It chooses the $45 IKEA desk, the $25 wooden chair and the $18 lamp, then calls <code>check_bundle([…], 200)</code>. Code adds them up: <b>$88, within budget, $112 left</b>.</li>
-    <li><b>Answers (call 3).</b> It returns structured JSON: reply text, listing IDs and bundle IDs.</li>
-    <li><b>Output checks.</b> All three IDs came from the tools, every $ amount matches a real price or the verified total, and there's no canary, scam advice, PII or link. The cards are rendered from the database.</li>
+    <li><b>Answers (call 3).</b> It returns a structured JSON answer: the reply text, listing IDs and bundle IDs.</li>
+    <li><b>Output checks.</b> All three IDs came from the tools, every dollar amount matches a real price or the verified total, and the answer contains no canary token, scam advice, personal information or links. The cards are then drawn from the database.</li>
     <li><b>Logged.</b> 3 model calls, 4 tool calls, <b>6,186 input tokens (3,544 cached), 264 output</b>, 6.8 s, about ${c_bundle:.5f}. Visible on the dashboard (Figure 5).</li>
   </ol>
   {figure("run1_bundle", "The real run in the app. “How I found these” lists each tool call; the green box is the bundle total verified by code.", "tall")}
@@ -373,7 +378,7 @@ html = f"""<!doctype html>
 {table("Tokens and cost per run: 10 real SOMbot requests with the shipped settings (evaluation run 2, Oct 24).", ["Request", "Input", "Cached", "Output", "Calls", "Time", "Est. cost", "Correct"], token_rows)}
 <p>A typical SOMbot answer uses about <b>3,100 input tokens (80% cached) and 150 output tokens</b>, which costs about <b>${c_opt:.5f}</b>. Other measured runs: a Listing Helper draft costs about ${c_helper:.5f} (1,914 in, 162 out), a safety-guard check about ${c_guard:.6f} (287 in, 36 out), and a regex-blocked attack <b>$0</b>, because the model is never called.</p>
 {table("Monthly cost per user and at scale.", ["Scenario", "Assumption", "Monthly AI cost"], scale_rows, "keep")}
-<p>For an organization, the AI cost is close to negligible. A whole-school deployment would spend more on hosting than on tokens, and the daily budget cap puts a hard ceiling on the worst case.</p>
+<p>For an organization, the AI cost is close to negligible: a whole-school deployment would spend more on web hosting than on tokens, and the daily budget cap puts a hard ceiling on the worst case.</p>
 <h3>What I did to keep cost down</h3>
 <ol>
   <li><b>No AI for ordinary browsing.</b> Search, filters, categories and listing pages are plain code.</li>
@@ -386,28 +391,31 @@ html = f"""<!doctype html>
 </ol>
 <h3>Did cost-cutting hurt quality?</h3>
 {table("Optimized vs. unoptimized settings across two evaluation runs (10 requests each).", ["Run", "Settings", "Accuracy", "Avg input", "Avg cached", "Avg output", "Avg time", "Cost / answer"], effect_rows, "keep")}
-<p><b>No measurable quality loss.</b> Both settings answered all 10 requests correctly in both runs. Correct means the right listings shown, forbidden ones never shown, honest “no match” answers, and valid bundles. In run 1, the optimized settings used <b>20% fewer input tokens and were about 40% faster</b>. After safety hardening, the longer system prompt crossed the provider's caching threshold, and caching became the biggest saving: cost per answer fell from ${c_old_opt:.5f} to ${c_opt:.5f}, about <b>{(1 - c_opt / c_old_opt) * 100:.0f}% cheaper</b>. The optimized/unoptimized gap shrank to about 5%, and run 2's latency differences were within run-to-run noise. One cost-motivated rule did hurt quality: a tight “too good to be true” price check flagged a normal $25 chair. I loosened it and re-checked that no legitimate listing is flagged.</p>
-{figure("dash_runs", "The app's AI &amp; Safety dashboard logs every run: input, cached and output tokens, model calls, latency, outcome and guardrails. The bundle run from Section 4 is the fourth row; blocked attacks cost 0 tokens (regex) or about 320 tokens (guard).")}
+<p><b>No measurable quality loss.</b> Both settings answered all 10 requests correctly in both runs. (“Correct” means the right listings were shown, forbidden ones never appeared, “no match” was reported honestly, and bundles stayed within budget.)</p>
+<ul>
+  <li><b>Run 1:</b> the optimized settings used <b>20% fewer input tokens and were about 40% faster</b> than the unoptimized ones.</li>
+  <li><b>Run 2:</b> after safety hardening, the longer system prompt became large enough for the provider to cache. Caching became the biggest saving: cost per answer fell from ${c_old_opt:.5f} to ${c_opt:.5f}, about <b>{(1 - c_opt / c_old_opt) * 100:.0f}% cheaper</b>. The remaining gap between settings shrank to about 5%, and the latency difference was within normal run-to-run variation.</li>
+  <li><b>One trade-off I caught:</b> an overly strict “too good to be true” price warning flagged a normal $25 chair. I loosened the threshold and confirmed that no legitimate listing is flagged.</li>
+</ul>
+{figure("dash_runs", "An excerpt from the app's AI &amp; Safety dashboard, which logs every run: input, cached and output tokens, model calls, latency, outcome and guardrails triggered. The bundle run from Section 4 is the fourth row. Blocked attacks cost 0 tokens (input filter) or about 320 tokens (safety guard).")}
 {evidence(["Real token counts from 10 logged runs (Table 4) and the app's own logs (Figure 5)", "Cost per run, per user and at 100 and 10,000 users (Table 5)", "Before/after comparison showing no accuracy loss (Table 6)"])}
 
 <!-- ======================= 6. SAFETY ======================= -->
 {section(6, "Safety", "What could go wrong, what I built, and proof that it works")}
-<p>A marketplace that feeds member-written listings to an AI faces three kinds of risk: <b>attacks</b> (prompt injection, jailbreaks, privacy probing, scams), <b>agent malfunction</b> (invented listings or prices, runaway loops, the AI taking actions) and <b>overspending</b>. I built eight layers of defense, so that if one misses, the next one catches it. Several come from earlier homeworks (untrusted-content rules, regex screening, read-only tools, human approval for actions, step and token budgets, audit logs). Others are new here: an LLM guard, PII redaction, a canary token, marked untrusted text and output filtering.</p>
+<p>A marketplace that feeds member-written listings to an AI faces three kinds of risk: <b>attacks</b> (prompt injection, jailbreaks, privacy probing, scams), <b>agent malfunction</b> (invented listings or prices, runaway loops, the AI taking actions on its own) and <b>overspending</b>. SOMthing uses eight layers of defense, so that if one layer misses something, the next one catches it. Several build on techniques from earlier homeworks: treating outside content as untrusted, pattern screening, read-only tools, human approval for actions, step and token budgets, and audit logs. Others are new for this project: an AI safety guard, personal-information redaction, a canary token, marked untrusted text and output filtering.</p>
 {table("Risks that matter for SOMthing and the defenses built for each.", ["Risk", "What could happen", "Defenses built", "Evidence"], risk_rows)}
 <h3>Defenses working in the real app</h3>
 <div class="two">
   {figure("safety_blocks", "Two attacks blocked live. A direct injection is stopped by the regex screen before any AI call (0 tokens). A role-play jailbreak is stopped by the LLM guard (287 input tokens); SOMbot never sees it.", "tall")}
   {figure("safety_pii", "A request containing a phone number. The number is removed before the AI and the logs see it (the log in Figure 5 shows “[phone removed]”), and the user is told.", "tall")}
 </div>
-<div class="two">
-  {figure("held", "A seller tries to post a listing with hidden AI instructions and a Venmo-deposit demand. It's held for review: hidden from everyone else and never sent to the AI.")}
-  {figure("policy_reject", "A listing selling midterm answers, with a phone number, is rejected with a clear explanation (honor code; contact info).")}
-</div>
+{figure("held", "A seller tries to post a listing containing hidden instructions for the AI and a Venmo-deposit demand. It is held for review: hidden from everyone else and never sent to the AI.")}
+{figure("policy_reject", "A listing that sells midterm answers and includes a phone number is rejected, with a clear explanation (honor code; no contact info).", "narrow")}
 <h3>Tested: 55 automated tests and a live red team</h3>
 <p><b>Automated tests</b> (<code>python -m pytest</code>: 55 passing, no AI tokens). A scripted fake model reproduces each attack or malfunction and checks that it's stopped. Examples: <code>test_invented_listing_ids_are_removed</code>, <code>test_runaway_loop_is_stopped</code>, <code>test_obfuscated_injections_are_caught</code>, <code>test_llm_guard_fails_closed</code>, <code>test_canary_leak_is_blocked</code>, <code>test_pii_never_reaches_the_model</code>, <code>test_scam_advice_in_answer_is_replaced</code>, <code>test_token_budget_blocks_without_calling_model</code>, <code>test_ai_tools_are_read_only</code>.</p>
-<p><b>Live red team</b> (<code>python evals/red_team.py</code>) sends 15 attacks through the real model. The first run exposed real weaknesses, which I fixed and re-tested:</p>
+<p><b>Live red team</b> (<code>python evals/red_team.py</code>) sends 15 attacks through the real model. The first run exposed genuine weaknesses, which I fixed and then re-tested:</p>
 {table("Live red-team results before and after hardening.", ["Attack", "Run 1 (before fixes)", "Run 2 (after hardening)", "Tokens"], rt_rows)}
-<p class="dim">In run 1, three of the ✗ cases were still declined by the model but reached it without passing through the guard, and the fourth (translation trick) was answered harmlessly. Separately, the scam-advice filter mistakenly replaced a good <i>warning</i> about deposits. Fixes: a wider suspicious-phrase net in front of the guard, and judging scam advice per sentence. Result: 15/15, with shopping accuracy still 10/10.</p>
+<p class="dim">What run 1 revealed: in three of the four ✗ cases the model still declined on its own, but the request reached it without being screened by the guard; the fourth (the translation trick) received a harmless answer. Separately, the scam-advice filter wrongly replaced a helpful <i>warning</i> about deposits. Two fixes followed: a wider set of suspicious phrases that route messages to the guard, and judging scam advice sentence by sentence. Run 2 handled all 15 attacks, and shopping accuracy stayed at 10/10.</p>
 {figure("dash_layers", "The eight safety layers as summarized in the app's AI &amp; Safety dashboard, which also offers one-click attack demos.")}
 {evidence(["Risks mapped to built defenses (Table 7)", "Screenshots of defenses stopping attacks and malfunctions (Figures 6–9)", "55 passing tests and a 15-attack live red team (Table 8)"])}
 
@@ -415,7 +423,7 @@ html = f"""<!doctype html>
 {section(7, "Impact", "The numbers, and where each one comes from")}
 {table("Impact metrics and their sources.", ["Metric", "Result", "Source"], impact_rows, "keep")}
 <div class="callout warn"><b>Real-user evidence: an honest note.</b> I am SOMthing's first real user. The selling and tutoring problems in Section 2 are mine, and I plan to sell my furniture through it when I move. I have tested it end to end with live AI runs, but I haven't yet run a timed test with another SOM student, so the time-saved numbers are careful estimates. The app is ready for that test: it records a thumbs up or down on every SOMbot answer and shows a “found helpful” percentage on the dashboard.</div>
-<p><b>Something that wasn't possible before:</b> asking one question, “I'm moving in, desk + chair + lamp under $200,” and getting three real, priced items from classmates with the total verified. Today that takes several searches across Slack and several apps. Sellers can list a whole apartment without spamming a channel, and students can find a classmate who tutors by the hour instead of waiting for a slot.</p>
+<p><b>What becomes possible:</b> a student asks one question (“I'm moving in, desk + chair + lamp under $200”) and gets three real, priced items from classmates with the total already verified. Today that takes several searches across Slack and multiple apps. Sellers can list a whole apartment without flooding a channel, and students can find a classmate who tutors by the hour instead of waiting for an official slot.</p>
 <div class="two">
   {figure("inbox", "The (simulated) inbox. Buyers contact sellers inside SOMthing, so phone numbers and emails stay private.")}
   {figure("mobile", "Works on phones: the limited-edition Yale Labubu listing on a 390-px-wide screen.")}
