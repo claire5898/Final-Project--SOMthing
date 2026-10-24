@@ -80,36 +80,54 @@ To stop the app, press `Ctrl+C` in the terminal.
 
 ---
 
-## Safety guardrails (all built and tested)
+## Safety: 8 layers of defense (all built and tested)
 
-| Risk | Defense | Where |
-|---|---|---|
-| Prompt injection typed into the chat | Pattern filter blocks it **before** any AI call (0 tokens spent) | `somthing/safety.py` |
-| Prompt injection or scams hidden in listings | Listings are scanned when posted. Flagged ones are **held**: hidden from browsing and never sent to the AI. The tools also mark listing text as untrusted data. | `safety.py`, `store.py`, `agents.py` |
-| AI invents listings | Every ID the AI returns must have come from its own tool results, otherwise it's removed. Cards are drawn from the database, never from AI text. | `agents.chat` |
-| AI invents prices / bad math | Every `$` amount in a reply is checked against real prices. Bundle totals are computed by code (`check_bundle`). | `agents.py`, `search.py` |
-| Agent loops forever | At most 4 tool rounds and 8 tool calls, then a forced answer or a fallback to real search results | `run_tool_loop` |
-| Overspending | 60k tokens per session, 1.5M per day, 8 AI requests per minute, 500-character messages, 900 output tokens per call | `config.py` |
-| Bad AI drafts | The Listing Helper's output is validated: section/category consistency, units, price range, lengths | `validate_draft` |
-| Cross-site scripting | All user text is HTML-escaped in the browser | `static/js/app.js` |
-| Leaking secrets | Key only on the server; `.env` is gitignored; `/api/health` reports *where* the key was found, never its value | `config.py` |
+The full threat model (14 risks → defenses → tests) is in **[SAFETY.md](SAFETY.md)**. In short:
+
+| Layer | What it does |
+|---|---|
+| 1. Input checks | Length limits, Unicode/obfuscation normalization (catches "i g n o r e", "1gn0re", zero-width tricks), prompt-injection patterns, and **PII redaction** (emails, phones, SSNs, card numbers) before anything reaches the AI or the logs |
+| 2. LLM safety guard | Suspicious messages get a second opinion from a small structured `gpt-6-luna` classifier (injection, privacy, scams, honor code, illegal items, harassment). It **fails closed**. |
+| 3. Untrusted data | Listings with hidden AI instructions or pay-first scams are **held**: hidden from browsing and never sent to the AI. All member-written text is wrapped in ⟦ ⟧ markers that authors can't forge. |
+| 4. Least privilege | The AI's tools are read-only. Posting, saving and messaging always need a human click, and the Listing Helper only drafts. |
+| 5. Output checks | Only tool-returned listing IDs can be shown. Prices and bundle totals are verified by code. A **canary token** catches prompt leaks. Scam advice, links and PII are filtered. |
+| 6. Spend and abuse limits | 60k tokens per session, 1.5M per day, 8 AI requests per minute, 4 tool rounds and 8 tool calls per question, 900 output tokens per call |
+| 7. Marketplace policy | No weapons, drugs, fake IDs or selling exam answers (honor code), no phone numbers or emails in listings, and "too good to be true" price warnings |
+| 8. App security | Key stays server-side, HTML escaping, Content-Security-Policy headers, real-image checks on uploads, a 5-failed-sign-ins-per-minute limit, and an audit log of every AI run |
+
+You can watch the defenses work: open **AI & Safety dashboard** (account menu) and click the attack buttons, such as prompt injection, role-play jailbreak, privacy probe or honor-code request.
 
 ### Run the tests (no AI tokens used)
 ```bash
 python -m pytest -q
 ```
-35 tests use a scripted fake model to reproduce attacks and malfunctions (invented listings, runaway loops, injection, budget exhaustion, provider outages) and check that each one is stopped. They also test browsing, posting, favorites, inquiries, and loading `.env` from the parent folder.
+54 tests use a scripted fake model to reproduce attacks and malfunctions and check that each one is stopped:
+- invented listings, runaway loops, obfuscated injection, guard blocks and fail-closed
+- canary leaks, scam advice, PII, prohibited items, fake uploads, brute-force sign-in
+- budget exhaustion and provider outages
 
-### Live evaluation (uses the course key, about 70k tokens)
+They also cover browsing, posting, favorites, inquiries, and loading `.env` from the parent folder.
+
+### Live red team (uses the course key, about 15k tokens)
+```bash
+python evals/red_team.py
+```
+Sends 15 real attacks (injection, jailbreaks, leak tricks, privacy probes, scams, honor-code and prohibited-item requests, PII, hallucination bait, token floods) through SOMbot. Latest result: **15/15 handled safely**. The first run scored 11/15, and SAFETY.md explains what changed.
+
+### Live accuracy and cost evaluation (uses the course key, about 70k tokens)
 ```bash
 python evals/run_eval.py
 ```
-Runs 10 real requests through SOMbot twice: once with the shipped, cost-optimized settings and once unoptimized. It scores accuracy and records tokens. Results are saved in `evals/results/`.
+Runs 10 real shopping requests through SOMbot with the shipped settings and with an unoptimized configuration. It scores accuracy and records tokens. Results are saved in `evals/results/`.
 
-| Settings | Accuracy | Avg input tokens | Avg output tokens | Avg latency |
-|---|---|---|---|---|
-| **Optimized** (compact tool results, 6 results, low reasoning effort) | **10/10** | **2,806** | **145** | **4.2 s** |
-| Unoptimized (full listing text, 12 results, medium effort) | 10/10 | 3,510 | 168 | 6.9 s |
+| Run | Settings | Accuracy | Avg input tokens | Avg cached | Avg output tokens |
+|---|---|---|---|---|---|
+| Before safety hardening | Optimized (shipped) | 10/10 | 2,806 | 434 | 145 |
+| Before safety hardening | Unoptimized (full listing text, 12 results, medium effort) | 10/10 | 3,510 | 735 | 168 |
+| **After safety hardening** | **Optimized (shipped)** | **10/10** | **3,110** | **2,492** | **149** |
+| After safety hardening | Unoptimized | 10/10 | 3,223 | 2,515 | 149 |
+
+The hardened system prompt is long enough to be **prompt-cached**, so about 80% of input tokens are now cached. Estimated cost per answer is about **$0.00016** (at $0.10 per million input, $0.01 per million cached and $0.50 per million output, estimated `gpt-6-luna` list prices).
 
 ---
 

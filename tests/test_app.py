@@ -48,12 +48,16 @@ def test_profile_post_favorite_and_inquiry_flow(client):
         "location": "Evans Hall", "availability": "Weekends", "experience": "TA for micro",
     })
     assert r.status_code == 200 and r.json()["status"] == "active" and r.json()["is_demo_post"]
-    assert client.put("/api/favorites/L001").json()["favorites"] == ["L001"]
+    seeded_favs = [l["id"] for l in client.get("/api/favorites").json()["listings"]]
+    seeded_inbox = len(client.get("/api/inquiries").json()["sent"])
+    assert seeded_favs and seeded_inbox  # demo account starts with saved items and inquiries
+    assert "L001" in client.put("/api/favorites/L001").json()["favorites"]
     inq = client.post("/api/inquiries", json={"listing_id": "L001", "message": "Still available?"}).json()
     assert inq["simulated"] is True
-    assert len(client.get("/api/inquiries").json()["sent"]) == 1
+    assert len(client.get("/api/inquiries").json()["sent"]) == seeded_inbox + 1
     client.post("/api/demo/reset")
-    assert client.get("/api/favorites").json()["listings"] == []
+    assert [l["id"] for l in client.get("/api/favorites").json()["listings"]] == seeded_favs
+    assert len(client.get("/api/inquiries").json()["sent"]) == seeded_inbox
 
 
 def test_invalid_post_rejected(client):

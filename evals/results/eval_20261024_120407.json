@@ -1,0 +1,326 @@
+{
+  "model": "gpt-6-luna",
+  "cases": 10,
+  "results": {
+    "optimized": {
+      "settings": {
+        "compact": true,
+        "effort": "low",
+        "result_limit": 6
+      },
+      "accuracy": 1.0,
+      "avg_input": 3110.3,
+      "avg_cached": 2491.7,
+      "avg_output": 149.3,
+      "avg_calls": 2.3,
+      "avg_latency_s": 5.0,
+      "rows": [
+        {
+          "q": "Find a desk under $100",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L001",
+            "L003"
+          ],
+          "input": 2616,
+          "cached": 1063,
+          "output": 148,
+          "calls": 2,
+          "latency_s": 3.6,
+          "reply": "Here are two desks under $100: IKEA Micke desk (white) \u2014 $45, seller Jonah. It\u2019s a compact desk with a drawer and cable outlet. Standing desk, electric sit/stand \u2014 $85, seller Kenji. It has a 48-inch top and working motor. Meet on campus and pay in person; use the Contact seller button to arrange pickup."
+        },
+        {
+          "q": "I need help with Excel",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L036",
+            "L034"
+          ],
+          "input": 2679,
+          "cached": 2115,
+          "output": 141,
+          "calls": 2,
+          "latency_s": 3.8,
+          "reply": "Here are a couple of Excel options: \u201cExcel crash course (2-hour group session)\u201d with Hannah for $25/session, covering lookups, pivot tables, charts, and basic formulas; or \u201cExcel financial modeling coaching\u201d with Maya for $35/hour, focused on financial models and Excel shortcuts. Which sounds closer to what you need?"
+        },
+        {
+          "q": "I'm moving in: I need a desk, a chair and a lamp for under $200 total",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L001",
+            "L005",
+            "L009"
+          ],
+          "input": 6238,
+          "cached": 4623,
+          "output": 291,
+          "calls": 3,
+          "latency_s": 6.5,
+          "reply": "You can get all three for $88 total, under your $200 budget: IKEA Micke desk (white) \u2014 $45 from Jonah; Simple wooden desk chair \u2014 $25 from Jonah; and Black metal desk lamp \u2014 $18 from Sofia. The desk is compact, the chair is sturdy, and the lamp has an adjustable arm and LED bulb. The chair\u2019s price is unusually low, so inspect it in person. Meet on campus and pay in person."
+        },
+        {
+          "q": "Someone to fix my bike this week",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L042"
+          ],
+          "input": 2510,
+          "cached": 2117,
+          "output": 140,
+          "calls": 2,
+          "latency_s": 3.6,
+          "reply": "Diego offers a Bike tune-up & flat repair session for $25. It covers brake and gear adjustments, chain cleaning, and flat-tire repair; availability is evenings, so it may work this week. You can bring your bike to Wooster Square or ask about having him come to you. Contact the seller through the listing to confirm timing."
+        },
+        {
+          "q": "LinkedIn headshots",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L044"
+          ],
+          "input": 2360,
+          "cached": 2114,
+          "output": 109,
+          "calls": 2,
+          "latency_s": 3.1,
+          "reply": "LinkedIn headshots (20 min session) \u2014 $60 per session, from Omar. It includes 5 edited photos delivered within 48 hours, with sessions near Evans Hall on weekday lunch hours."
+        },
+        {
+          "q": "A car under $5,000",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L018",
+            "L019"
+          ],
+          "input": 3741,
+          "cached": 3273,
+          "output": 160,
+          "calls": 3,
+          "latency_s": 9.8,
+          "reply": "I couldn\u2019t find any cars listed under $5,000. The closest alternatives I found are over budget: 2016 Honda Civic LX for $9,800 from Omar, and 2019 Subaru Outback AWD for $17,900 from Sam."
+        },
+        {
+          "q": "Find me a laptop",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L014"
+          ],
+          "input": 3596,
+          "cached": 3267,
+          "output": 149,
+          "calls": 3,
+          "latency_s": 3.9,
+          "reply": "I couldn\u2019t find any laptop listings. I did find a different-category alternative: Dell 27\" 4K monitor for $160, listed by Kenji. It\u2019s a like-new monitor, not a laptop."
+        },
+        {
+          "q": "French conversation lessons",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L051"
+          ],
+          "input": 2366,
+          "cached": 2113,
+          "output": 100,
+          "calls": 2,
+          "latency_s": 2.8,
+          "reply": "French conversation practice with Amara \u2014 $30/hour. Relaxed sessions for all levels, with weekday evening availability in Edgewood or on Zoom."
+        },
+        {
+          "q": "Warm winter coat under $400",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L024"
+          ],
+          "input": 2468,
+          "cached": 2116,
+          "output": 130,
+          "calls": 2,
+          "latency_s": 6.6,
+          "reply": "The Black winter coat (men\u2019s M) is $120 from Marcus. It\u2019s in good condition, and the seller says it\u2019s still very warm after three New Haven winters\u2014well under your $400 budget. The other listing is a bundle of sweaters and light jackets, not a warm winter coat."
+        },
+        {
+          "q": "Help preparing for consulting case interviews",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L048"
+          ],
+          "input": 2529,
+          "cached": 2116,
+          "output": 125,
+          "calls": 2,
+          "latency_s": 6.8,
+          "reply": "\u201cMock case interviews (consulting)\u201d is $45 per session with Marcus. It includes a 45-minute case and a 15-minute debrief with written feedback, covering market sizing, profitability, and M&A. Available weeknights on Zoom or at Evans Hall."
+        }
+      ]
+    },
+    "unoptimized": {
+      "settings": {
+        "compact": false,
+        "effort": "medium",
+        "result_limit": 12
+      },
+      "accuracy": 1.0,
+      "avg_input": 3223.3,
+      "avg_cached": 2515.3,
+      "avg_output": 149,
+      "avg_calls": 2.3,
+      "avg_latency_s": 3.8,
+      "rows": [
+        {
+          "q": "Find a desk under $100",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L001",
+            "L003"
+          ],
+          "input": 2694,
+          "cached": 1063,
+          "output": 121,
+          "calls": 2,
+          "latency_s": 3.9,
+          "reply": "I found two desks under $100: IKEA Micke desk (white) for $45 from Jonah, a compact desk with a drawer; and an electric standing desk for $85 from Kenji, with a 48-inch top and memory presets."
+        },
+        {
+          "q": "I need help with Excel",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L036",
+            "L034"
+          ],
+          "input": 2774,
+          "cached": 2115,
+          "output": 149,
+          "calls": 2,
+          "latency_s": 3.9,
+          "reply": "Here are two Excel options: Hannah\u2019s Excel crash course is $25 per session, a 2-hour group session covering formulas, lookups, pivot tables, and charts. Maya offers one-on-one Excel financial modeling coaching for $35 per hour, focused on 3-statement models, DCFs, and LBOs. Use the Contact seller button to arrange a session."
+        },
+        {
+          "q": "I'm moving in: I need a desk, a chair and a lamp for under $200 total",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L001",
+            "L005",
+            "L009"
+          ],
+          "input": 6710,
+          "cached": 4859,
+          "output": 327,
+          "calls": 3,
+          "latency_s": 5.1,
+          "reply": "This bundle totals $88, leaving $112 under your budget: IKEA Micke desk (white) for $45 from Jonah, compact with a drawer; Simple wooden desk chair for $25 from Jonah, a sturdy basic match for the desk; and Black metal desk lamp for $18 from Sofia, with an adjustable arm and LED bulb. The chair is unusually inexpensive, so inspect it in person before deciding. Coordinate through Contact seller, and meet on campus and pay in person."
+        },
+        {
+          "q": "Someone to fix my bike this week",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L042"
+          ],
+          "input": 2567,
+          "cached": 2117,
+          "output": 135,
+          "calls": 2,
+          "latency_s": 3.0,
+          "reply": "Bike tune-up & flat repair from Diego is $25 per session. It covers brake and gear adjustments, chain cleaning, and flat-tire repair, and is available evenings. The listing doesn\u2019t confirm availability this week, so contact Diego through the Contact seller button to check. You can meet on campus and pay in person."
+        },
+        {
+          "q": "LinkedIn headshots",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L044"
+          ],
+          "input": 2389,
+          "cached": 2114,
+          "output": 106,
+          "calls": 2,
+          "latency_s": 3.1,
+          "reply": "LinkedIn headshots (20 min session) \u2014 $60 per session, offered by Omar. It includes 5 edited photos within 48 hours, with sessions outdoors near Evans Hall."
+        },
+        {
+          "q": "A car under $5,000",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L018",
+            "L019"
+          ],
+          "input": 3966,
+          "cached": 3273,
+          "output": 163,
+          "calls": 3,
+          "latency_s": 4.3,
+          "reply": "I couldn\u2019t find a car listed under $5,000. The closest car listings I found are over budget: a 2016 Honda Civic LX for $9,800 from Omar, and a 2019 Subaru Outback AWD for $17,900 from Sam."
+        },
+        {
+          "q": "Find me a laptop",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L014"
+          ],
+          "input": 3625,
+          "cached": 3267,
+          "output": 154,
+          "calls": 3,
+          "latency_s": 4.4,
+          "reply": "I couldn\u2019t find any laptop listings right now. The closest alternative is a Dell 27\" 4K monitor for $160 from Kenji; it\u2019s a like-new monitor, not a laptop, and includes USB-C and a stand."
+        },
+        {
+          "q": "French conversation lessons",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L051"
+          ],
+          "input": 2391,
+          "cached": 2113,
+          "output": 110,
+          "calls": 2,
+          "latency_s": 3.4,
+          "reply": "French conversation practice with Amara \u2014 $30/hour. Relaxed sessions for all levels, with a native speaker who has taught at Alliance Fran\u00e7aise; available weekday evenings in Edgewood or by Zoom."
+        },
+        {
+          "q": "Warm winter coat under $400",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L024"
+          ],
+          "input": 2527,
+          "cached": 2116,
+          "output": 104,
+          "calls": 2,
+          "latency_s": 3.1,
+          "reply": "Black winter coat (men\u2019s M) \u2014 $120, Marcus. It\u2019s in good condition, and the seller says it\u2019s still very warm after three New Haven winters."
+        },
+        {
+          "q": "Help preparing for consulting case interviews",
+          "pass": true,
+          "why": "ok",
+          "ids": [
+            "L048"
+          ],
+          "input": 2590,
+          "cached": 2116,
+          "output": 121,
+          "calls": 2,
+          "latency_s": 3.4,
+          "reply": "Mock case interviews (consulting) \u2014 $45/session with Marcus. Includes a 45-minute case and 15-minute debrief with written feedback, covering market sizing, profitability, and M&A. Available weeknights on Zoom or at Evans Hall."
+        }
+      ]
+    }
+  }
+}

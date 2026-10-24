@@ -42,6 +42,8 @@ class Store:
         self._lock = threading.RLock()
         self._seed_users = json.loads((data_dir / "users.json").read_text())
         self._seed_listings = json.loads((data_dir / "listings.json").read_text())
+        activity = data_dir / "demo_activity.json"
+        self._seed_activity = json.loads(activity.read_text()) if activity.is_file() else {}
         self.reset(save=False)
         self._load_state()
 
@@ -61,8 +63,13 @@ class Store:
                 listing["status"] = "held" if reasons else "active"
                 listing["safety_reasons"] = reasons
                 self.listings[listing["id"]] = listing
-            self.favorites: dict[str, list[str]] = {}
+            # Pre-filled demo activity (saved items + inquiries with simulated replies).
+            self.favorites: dict[str, list[str]] = copy.deepcopy(self._seed_activity.get("favorites", {}))
             self.inquiries: list[dict] = []
+            for seed in self._seed_activity.get("inquiries", []):
+                inquiry = copy.deepcopy(seed)
+                inquiry["listing_title"] = self.listings[inquiry["listing_id"]]["title"]
+                self.inquiries.append(inquiry)
             self.posted_ids: list[str] = []
             if save:
                 for f in self.uploads_dir.glob("*") if self.uploads_dir.exists() else []:

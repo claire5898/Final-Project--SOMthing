@@ -9,6 +9,7 @@ The key is only ever used server-side and is never logged or sent to the browser
 from __future__ import annotations
 
 import os
+import secrets
 from pathlib import Path
 
 from dotenv import load_dotenv
@@ -22,6 +23,9 @@ STATIC_DIR = REPO_DIR / "static"
 MODEL_NAME = "gpt-6-luna"
 PORTKEY_BASE_URL = "https://api.portkey.ai/v1"
 REASONING_EFFORT = "low"  # cost control; see evals/ for the quality comparison
+# Canary token placed in the system prompts; if it ever appears in an answer, the
+# prompt leaked and the answer is blocked. New random value every time the app starts.
+CANARY = "SOMT-CANARY-" + secrets.token_hex(4).upper()
 
 # --- Guardrails ------------------------------------------------------------
 MAX_MESSAGE_CHARS = 500          # longest chat message we accept

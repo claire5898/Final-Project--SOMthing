@@ -155,3 +155,14 @@ def check_bundle(listings_by_id: dict[str, dict], listing_ids: list[str], budget
 
 def valid_category(section: str, category: str) -> bool:
     return section in SECTIONS and category in SECTIONS[section]["categories"]
+
+
+def price_outlier(listings: list[dict], listing: dict, ratio: float = 0.35) -> bool:
+    """'Too good to be true' check: physical item priced far below similar items in its category."""
+    if listing.get("section") != "physical" or not listing.get("price"):
+        return False
+    similar = [
+        l["price"] for l in search_listings(listings, query=listing["title"], category=listing["category"])
+        if l["id"] != listing["id"]
+    ]
+    return len(similar) >= 2 and listing["price"] < ratio * statistics.median(similar)

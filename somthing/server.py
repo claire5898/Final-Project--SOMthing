@@ -13,14 +13,36 @@ from pydantic import BaseModel
 
 from . import agents, config
 from .catalog import CONDITIONS, PRICE_UNITS, SECTIONS
-from .safety import REASON_LABELS, RateLimiter, TokenBudget
-from .search import search_listings, valid_category
+from .safety import POLICY_LABELS, REASON_LABELS, RateLimiter, TokenBudget, detect_pii, listing_policy_violations
+from .search import price_outlier, search_listings, valid_category
 from .store import Store, category_emoji
 from .usage import UsageLog
 
 SESSION_COOKIE = "somthing_session"
 MAX_UPLOAD_BYTES = 3 * 1024 * 1024
 ALLOWED_IMAGE_TYPES = {"image/jpeg": ".jpg", "image/png": ".png", "image/webp": ".webp", "image/gif": ".gif"}
+SECURITY_HEADERS = {
+    "Content-Security-Policy": (
+        "default-src 'self'; img-src 'self' data: blob:; style-src 'self' 'unsafe-inline'; script-src 'self'; "
+        "connect-src 'self'; frame-ancestors 'none'; base-uri 'none'; form-action 'self'"
+    ),
+    "X-Content-Type-Options": "nosniff",
+    "X-Frame-Options": "DENY",
+    "Referrer-Policy": "no-referrer",
+}
+
+
+def looks_like_image(data: bytes, ext: str) -> bool:
+    """Check the file's magic bytes, not just the browser-supplied content type."""
+    if ext == ".jpg":
+        return data[:3] == b"\xff\xd8\xff"
+    if ext == ".png":
+        return data[:8] == b"\x89PNG\r\n\x1a\n"
+    if ext == ".gif":
+        return data[:4] == b"GIF8"
+    if ext == ".webp":
+        return data[:4] == b"RIFF" and data[8:12] == b"WEBP"
+    return False
 
 
 # ----- request bodies -----
@@ -58,6 +80,14 @@ class AppState:
 def create_app(state: AppState | None = None) -> FastAPI:
     state = state or AppState()
     app = FastAPI(title="SOMthing", docs_url=None, redoc_url=None)
+    login_limiter = RateLimiter(max_requests=5, window=60)  # failed sign-in attempts per client
+
+    @app.middleware("http")
+    async def security_headers(request: Request, call_next):
+        response = await call_next(request)
+        for k, v in SECURITY_HEADERS.items():
+            response.headers.setdefault(k, v)
+        return response
     app.state.somthing = state
     state.store.uploads_dir.mkdir(parents=True, exist_ok=True)
 
@@ -74,8 +104,11 @@ def create_app(state: AppState | None = None) -> FastAPI:
 
     # ----- auth (mock) ----------------------------------------------------------
     @app.post("/api/login")
-    def login(body: LoginBody, response: Response):
+    def login(body: LoginBody, response: Response, request: Request):
+        client_key = request.client.host if request.client else "unknown"
         if body.yale_id.strip().lower() != config.DEMO_LOGIN_ID or body.password != config.DEMO_LOGIN_PASSWORD:
+            if not login_limiter.allow(client_key):
+                raise HTTPException(status_code=429, detail="Too many failed sign-in attempts. Wait a minute and try again.")
             raise HTTPException(status_code=401, detail="Use the demo test credentials shown on this page.")
         token = secrets.token_urlsafe(24)
         with state.lock:
@@ -159,6 +192,8 @@ def create_app(state: AppState | None = None) -> FastAPI:
             if x["id"] != l["id"]
         ][:4]
         out["similar"] = [state.store.listing_public(x) for x in same]
+        if price_outlier(state.store.active_listings(), l):
+            out["price_warning"] = "This price is much lower than similar listings. Inspect the item in person before paying."
         return out
 
     @app.get("/api/users/{uid}")
@@ -216,10 +251,14 @@ def create_app(state: AppState | None = None) -> FastAPI:
                 errors.append("Photo must be a JPG, PNG, WEBP or GIF.")
             elif len(data) > MAX_UPLOAD_BYTES:
                 errors.append("Photo must be under 3 MB.")
+            elif not looks_like_image(data, ext):
+                errors.append("That file doesn't look like a real image.")
             else:
                 name = f"{uuid.uuid4().hex}{ext}"
                 (state.store.uploads_dir / name).write_bytes(data)
                 image_url = f"/uploads/{name}"
+        policy = listing_policy_violations(title, description, experience)
+        errors += [POLICY_LABELS[p] for p in policy]
         if errors:
             raise HTTPException(status_code=400, detail=" ".join(errors))
         fields = {
@@ -261,6 +300,8 @@ def create_app(state: AppState | None = None) -> FastAPI:
             raise HTTPException(status_code=404, detail="Listing not found.")
         if l["seller_id"] == uid:
             raise HTTPException(status_code=400, detail="That's your own listing.")
+        if {"ssn", "card_number"} & set(detect_pii(body.message)):
+            raise HTTPException(status_code=400, detail="For your safety, don't send SSNs or card numbers in messages.")
         if not (2 <= len(body.message.strip()) <= 1000):
             raise HTTPException(status_code=400, detail="Message must be 2-1000 characters.")
         return state.store.add_inquiry(uid, body.listing_id, body.message.strip(), body.contact_pref[:40])
@@ -269,7 +310,8 @@ def create_app(state: AppState | None = None) -> FastAPI:
     def list_inquiries(request: Request):
         uid = user_id(request)
         sent = [
-            {**i, "to_name": state.store.seller_summary(i["to_user_id"])["name"]}
+            {**i, "to_name": state.store.seller_summary(i["to_user_id"])["name"],
+             "listing_image": (state.store.get_listing(i["listing_id"]) or {}).get("image")}
             for i in state.store.inquiries if i["from_user_id"] == uid
         ][::-1]
         return {"sent": sent}
@@ -285,7 +327,7 @@ def create_app(state: AppState | None = None) -> FastAPI:
         if not result.get("blocked") and not result.get("error"):
             shown = ", ".join(l["id"] for l in result.get("listings", []))
             sess["history"] += [
-                {"role": "user", "content": body.message.strip()},
+                {"role": "user", "content": result.get("history_message", body.message.strip())},
                 {"role": "assistant", "content": result["reply"] + (f" [Listings shown: {shown}]" if shown else "")},
             ]
             sess["history"] = sess["history"][-2 * config.HISTORY_TURNS:]
