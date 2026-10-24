@@ -38,11 +38,11 @@ RATE_LIMIT_WINDOW_SECONDS = 60   # ... per this many seconds, per session
 REQUEST_TIMEOUT_SECONDS = 60
 
 # --- Pricing (USD per 1M tokens) used for cost estimates ---------------------
-# Set these to the course's published gpt-6-luna prices. Leave as None to show
-# token counts only.
-PRICE_INPUT_PER_M: float | None = None
-PRICE_CACHED_INPUT_PER_M: float | None = None
-PRICE_OUTPUT_PER_M: float | None = None
+# Estimates: published gpt-6-luna list prices as reported by pricing aggregators
+# (October 2026). The course key is billed through Portkey, so actual cost may differ.
+PRICE_INPUT_PER_M: float | None = 0.10
+PRICE_CACHED_INPUT_PER_M: float | None = 0.01
+PRICE_OUTPUT_PER_M: float | None = 0.50
 
 # --- Mock sign-in (classroom demo only, not real Yale authentication) -------
 DEMO_LOGIN_ID = "demo.student"

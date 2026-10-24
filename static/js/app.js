@@ -593,7 +593,7 @@
         <div class="kpi"><div class="v">${fmt(a.avg_input_tokens)}</div><div class="l">Avg input tokens / SOMbot answer</div></div>
         <div class="kpi"><div class="v">${fmt(a.avg_cached_tokens)}</div><div class="l">Avg cached input tokens</div></div>
         <div class="kpi"><div class="v">${fmt(a.avg_output_tokens)}</div><div class="l">Avg output tokens</div></div>
-        <div class="kpi"><div class="v">${cost == null ? "—" : "$" + cost.toFixed(4)}</div><div class="l">${cost == null ? "Cost (set prices in config.py)" : "Estimated total cost"}</div></div>
+        <div class="kpi"><div class="v">${cost == null ? "—" : "$" + cost.toFixed(4)}</div><div class="l">${cost == null ? "Cost (prices not set)" : "Estimated total cost"}</div></div>
       </div>
       <div class="two-col" style="margin-top:16px">
         <div class="panel"><h3 style="margin-top:0">${ic("shield")} Guardrails in place</h3>
