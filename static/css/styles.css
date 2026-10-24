@@ -443,3 +443,30 @@ table.data tr:nth-child(even) td { background: var(--surface-2); }
 .layers { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 12px; }
 .layer { background: var(--surface-2); border: 1px solid var(--border); border-left: 4px solid var(--navy); border-radius: 12px; padding: 12px 14px; }
 .layer b { color: var(--navy-dark); display: block; margin-bottom: 4px; }
+
+/* ---------- SOMbot feedback ---------- */
+.feedback { display: flex; align-items: center; gap: 6px; }
+.fb { border: 1px solid var(--border); background: #fff; color: var(--navy); width: 30px; height: 30px; border-radius: 50%; cursor: pointer; display: grid; place-items: center; }
+.fb:hover, .fb.on { background: var(--navy); color: #fff; border-color: var(--navy); }
+
+/* ---------- how it works ---------- */
+.flow { display: flex; align-items: stretch; gap: 8px; flex-wrap: wrap; }
+.flow-box { flex: 1 1 150px; background: #fff; border: 1px solid var(--border); border-radius: 12px; padding: 12px; }
+.flow-box b { display: block; color: var(--navy-dark); margin-bottom: 4px; }
+.flow-box.ai { background: var(--navy); border-color: var(--navy); color: #fff; }
+.flow-box.ai b { color: #fff; }
+.flow-box.safe { background: #eef3fa; border-color: #c7d7ee; }
+.flow-arrow { align-self: center; color: var(--navy-2); font-size: 1.4rem; font-weight: 800; }
+.tools { margin-top: 10px; font-size: 0.9rem; background: var(--surface-2); border: 1px dashed var(--border); border-radius: 10px; padding: 10px 12px; }
+.tools code { background: #fff; border: 1px solid var(--border); border-radius: 6px; padding: 1px 6px; }
+table.compare { width: 100%; border-collapse: collapse; font-size: 0.86rem; }
+table.compare th, table.compare td { padding: 7px 6px; border-bottom: 1px solid var(--border); text-align: center; }
+table.compare th:first-child, table.compare td:first-child { text-align: left; }
+table.compare th { color: var(--navy-dark); font-size: 0.8rem; }
+.compare .yes { color: var(--green); } .compare .no { color: var(--muted); }
+@media (max-width: 900px) { .flow-arrow { transform: rotate(90deg); flex-basis: 100%; text-align: center; } }
+
+/* ---------- accessibility ---------- */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .chip:focus-visible {
+  outline: 3px solid #f2c94c; outline-offset: 2px;
+}

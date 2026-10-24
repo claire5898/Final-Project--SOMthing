@@ -685,6 +685,7 @@ def chat(
         "blocked": False,
         "reply": reply,
         "history_message": safe_message,
+        "run_id": record.run_id,
         "no_match": bool(final.get("no_match")),
         "listings": [store.listing_public(store.listings[i]) for i in listing_ids],
         "bundle": bundle,

@@ -38,6 +38,9 @@
     calc: '<rect x="4" y="2" width="16" height="20" rx="2"/><path d="M8 6h8M8 11h.01M12 11h.01M16 11h.01M8 15h.01M12 15h.01M16 15h.01M8 18h8"/>',
     ban: '<circle cx="12" cy="12" r="10"/><path d="m4.9 4.9 14.2 14.2"/>',
     edit: '<path d="M12 20h9M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4z"/>',
+    thumbUp: '<path d="M7 10v11M15 5.9 14 10h5.8a2 2 0 0 1 2 2.3l-1.4 7a2 2 0 0 1-2 1.7H7V10l4-8a2.5 2.5 0 0 1 4 3.9z"/>',
+    thumbDown: '<path d="M17 14V3M9 18.1l1-4.1H4.2a2 2 0 0 1-2-2.3l1.4-7A2 2 0 0 1 5.6 3H17v11l-4 8a2.5 2.5 0 0 1-4-3.9z"/>',
+    compass: '<circle cx="12" cy="12" r="10"/><path d="m16.2 7.8-2.1 6.3-6.3 2.1 2.1-6.3z"/>',
   };
   const ic = (name, cls = "") => `<svg class="ic ${cls}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON_PATHS[name] || ""}</svg>`;
 
@@ -145,6 +148,7 @@
               <a href="#/user/${esc(me?.id)}">${ic("user")} My profile</a>
               <a href="#/saved">${ic("heart")} Saved items</a>
               <a href="#/inbox">${ic("mail")} Inbox</a>
+              <a href="#/about">${ic("compass")} How SOMthing works</a>
               <a href="#/dashboard">${ic("chart")} AI &amp; Safety dashboard</a>
               <button id="reset-demo">${ic("refresh")} Reset demo data</button>
               <button id="logout">${ic("logout")} Sign out</button>
@@ -155,7 +159,7 @@
       <main class="page">${content}</main>
       <footer class="footer">SOMthing is a classroom project for an AI course, not affiliated with or endorsed by Yale University.
         Sign-in, messages and listings are simulated. SOMthing never handles payments: meet on campus and pay in person.
-        · <a class="link" href="#/dashboard">AI &amp; Safety dashboard</a></footer>
+        · <a class="link" href="#/about">How it works</a> · <a class="link" href="#/dashboard">AI &amp; Safety dashboard</a></footer>
       <nav class="tabbar">
         <a href="#/" class="${active === "home" ? "active" : ""}"><span>${ic("home")}</span>Home</a>
         <a href="#/browse" class="${active === "physical" || active === "services" || active === "browse" ? "active" : ""}"><span>${ic("search")}</span>Browse</a>
@@ -487,8 +491,8 @@
           <div class="muted small">Type rough notes. The Listing Helper writes your listing and suggests a fair price based on similar listings on SOMthing. You review everything before posting.</div>
           <textarea id="notes" maxlength="800" style="margin-top:12px" placeholder="e.g. selling my ikea desk, white, used 1 yr, small scratch on top, pickup east rock weekends"></textarea>
           <div class="chips" style="margin-top:8px">
-            <span class="chip" data-note="selling my ikea desk, white, used 1 year, small scratch on top, pickup in east rock on weekends">Example: desk</span>
-            <span class="chip" data-note="I can tutor corporate finance and valuation, did 3 years of investment banking before SOM, evenings on zoom">Example: tutoring</span>
+            <button type="button" class="chip" data-note="selling my ikea desk, white, used 1 year, small scratch on top, pickup in east rock on weekends">Example: desk</button>
+            <button type="button" class="chip" data-note="I can tutor corporate finance and valuation, did 3 years of investment banking before SOM, evenings on zoom">Example: tutoring</button>
           </div>
           <button class="btn primary block" style="margin-top:12px" id="draft-btn">${ic("sparkle")} Draft my listing</button>
           <div id="draft-out" style="margin-top:12px"></div>
@@ -596,6 +600,67 @@
     };
   }
 
+
+  // ---------- How it works (agent design for graders + report) ----------
+  async function viewAbout() {
+    const box = (title, body, cls = "") => `<div class="flow-box ${cls}"><b>${title}</b><div class="small">${body}</div></div>`;
+    const arrow = `<div class="flow-arrow" aria-hidden="true">→</div>`;
+    const yes = `<span class="yes">${ic("check")}</span>`, no = `<span class="no">—</span>`;
+    app.innerHTML = shell(`
+      <section class="hero" style="grid-template-columns:1fr"><div>
+        <h1>How SOMthing works</h1>
+        <p>A marketplace for the SOM community, plus two AI agents that only work with real listings and are wrapped in eight layers of safety checks.</p>
+      </div></section>
+
+      <div class="section-title"><h2>${ic("sparkle")} Agent 1 · SOMbot, the shopping assistant</h2></div>
+      <div class="flow">
+        ${box("You ask", "“desk + chair + lamp under $200”")}${arrow}
+        ${box("Input checks", "length · injection · PII redaction · LLM guard if suspicious", "safe")}${arrow}
+        ${box("SOMbot (gpt-6-luna)", "plans searches, picks listings, writes the reply", "ai")}${arrow}
+        ${box("Output checks", "only real IDs · verified prices · canary · scam/PII filter", "safe")}${arrow}
+        ${box("Answer + cards", "prices and sellers come from the database")}
+      </div>
+      <div class="tools">${ic("search")} <b>Tools (read-only):</b> <code>search_listings</code> · <code>get_listing_details</code> · <code>check_bundle</code> (code adds up totals; the AI never does the math)</div>
+
+      <div class="section-title"><h2>${ic("edit")} Agent 2 · Listing Helper</h2></div>
+      <div class="flow">
+        ${box("Seller's rough notes", "“ikea desk, small scratch, pickup East Rock”")}${arrow}
+        ${box("Listing Helper (gpt-6-luna)", "writes title + description, flags missing info", "ai")}${arrow}
+        ${box("Price comps tool", "suggests a price from similar SOMthing listings", "safe")}${arrow}
+        ${box("You review + post", "human in the loop: the AI never posts")}${arrow}
+        ${box("Policy + scam filter", "prohibited items, contact info, hidden AI instructions → rejected or held", "safe")}
+      </div>
+
+      <div class="two-col" style="margin-top:22px">
+        <div class="panel">
+          <h3 style="margin-top:0">${ic("compass")} What's new here</h3>
+          <table class="compare">
+            <tr><th></th><th>SOMthing</th><th>Facebook Marketplace</th><th>Poshmark</th><th>ChatGPT</th></tr>
+            <tr><td>Only your school community</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Skills &amp; services next to items</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>AI answers from real local listings</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Budget bundles (desk + chair + lamp)</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Listing drafts priced from local comps</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+            <tr><td>Honor-code &amp; scam guardrails built in</td><td>${yes}</td><td>${no}</td><td>${no}</td><td>${no}</td></tr>
+          </table>
+          <div class="small muted" style="margin-top:8px">Based on how each product generally works today. ChatGPT can't see SOMthing's listings, so it can't recommend real offers.</div>
+        </div>
+        <div class="panel">
+          <h3 style="margin-top:0">${ic("bolt")} What it costs</h3>
+          <table class="facts">
+            <tr><td>One SOMbot answer</td><td>≈ 3,100 input (≈80% cached) + 150 output tokens ≈ <b>$0.00016</b></td></tr>
+            <tr><td>Per user per month</td><td>≈ <b>$0.01</b> (30 questions + 4 listing drafts)</td></tr>
+            <tr><td>100 users</td><td>≈ <b>$1 / month</b></td></tr>
+            <tr><td>10,000 users</td><td>≈ <b>$100 / month</b></td></tr>
+          </table>
+          <div class="small muted">Measured token counts × estimated gpt-6-luna list prices ($0.10 / $0.01 cached / $0.50 per 1M tokens). Browsing and filters use no AI at all.</div>
+          <a class="btn primary" style="margin-top:12px" href="#/dashboard">${ic("chart")} Open the AI &amp; Safety dashboard</a>
+        </div>
+      </div>
+    `, "about");
+    bindShell();
+  }
+
   // ---------- AI & Safety dashboard ----------
   async function viewDashboard() {
     const d = await api("/api/dashboard");
@@ -620,6 +685,15 @@
         <div class="kpi"><div class="v">${fmt(a.avg_cached_tokens)}</div><div class="l">Avg cached input tokens</div></div>
         <div class="kpi"><div class="v">${fmt(a.avg_output_tokens)}</div><div class="l">Avg output tokens</div></div>
         <div class="kpi"><div class="v">${cost == null ? "—" : "$" + cost.toFixed(4)}</div><div class="l">${cost == null ? "Cost (prices not set)" : "Estimated total cost"}</div></div>
+      </div>
+      <div class="panel" style="margin-top:16px">
+        <h3 style="margin-top:0">${ic("thumbUp")} User feedback on SOMbot answers</h3>
+        ${d.feedback.votes ? `<div class="kpis" style="margin-bottom:10px">
+            <div class="kpi"><div class="v">${d.feedback.satisfaction}%</div><div class="l">Found answers helpful</div></div>
+            <div class="kpi"><div class="v">${d.feedback.up}</div><div class="l">Helpful votes</div></div>
+            <div class="kpi"><div class="v">${d.feedback.down}</div><div class="l">Not helpful votes</div></div></div>
+          ${d.feedback.recent.map((f) => `<div class="small" style="padding:4px 0">${f.rating === "up" ? ic("thumbUp") : ic("thumbDown")} ${esc(f.question || "(question not logged)")} <span class="muted">· ${esc(f.ts.slice(5).replace("T", " "))}</span></div>`).join("")}`
+          : `<div class="muted">No votes yet. After a SOMbot answer, tap the thumbs up or down. Real-user feedback shows up here.</div>`}
       </div>
       <div class="two-col" style="margin-top:16px">
         <div class="panel"><h3 style="margin-top:0">${ic("shield")} Guardrails in place</h3>
@@ -734,6 +808,11 @@
           ${bundle}${minis}
           ${(r.warnings || []).map((w) => `<div class="notice warn small">${ic("alert")} ${esc(w)}</div>`).join("")}
           ${r.trace?.length ? `<details class="trace"><summary>How I found these (${r.trace.length} tool call${r.trace.length === 1 ? "" : "s"})</summary><ul>${r.trace.map((t) => `<li>${traceText(t)}</li>`).join("")}</ul></details>` : ""}
+          ${r.run_id && !r.blocked && !r.error ? `<div class="feedback" data-run="${esc(r.run_id)}">
+            <span class="small muted">Was this helpful?</span>
+            <button class="fb ${m.vote === "up" ? "on" : ""}" data-vote="up" aria-label="Helpful">${ic("thumbUp")}</button>
+            <button class="fb ${m.vote === "down" ? "on" : ""}" data-vote="down" aria-label="Not helpful">${ic("thumbDown")}</button>
+            ${m.vote ? `<span class="small muted">Thanks for the feedback!</span>` : ""}</div>` : ""}
           ${r.blocked ? `<div class="usage-line">${ic("shield")} Guardrail: ${esc(String(r.guardrail).replace(/_/g, " "))} · ${r.usage?.total_tokens ? usageText(r.usage) : "no AI tokens spent"}</div>` : `<div class="usage-line">${usageText(r.usage)}</div>`}
         </div>`;
     }).join("");
@@ -769,6 +848,16 @@
       renderChat();
     }
   }
+  chatEl.addEventListener("click", async (e) => {
+    const btn = e.target.closest("[data-vote]");
+    if (!btn) return;
+    const runId = btn.closest("[data-run]").dataset.run;
+    const msg = S.chat.find((m) => m.data && m.data.run_id === runId);
+    if (!msg) return;
+    msg.vote = btn.dataset.vote;
+    renderChat();
+    await api("/api/assistant/feedback", { method: "POST", body: { run_id: runId, rating: msg.vote } }).catch(() => {});
+  });
   document.getElementById("chat-form").onsubmit = (e) => {
     e.preventDefault();
     const input = document.getElementById("chat-input");
@@ -829,6 +918,7 @@
         case "saved": return await viewSaved();
         case "inbox": return await viewInbox();
         case "dashboard": return await viewDashboard();
+        case "about": return await viewAbout();
         default: return go("#/");
       }
     } catch (ex) {

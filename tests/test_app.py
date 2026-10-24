@@ -99,3 +99,11 @@ def test_repo_env_takes_priority(tmp_path, monkeypatch):
     (tmp_path / "submissions" / ".env").write_text("PORTKEY_API_KEY=from-parent\n")
     assert config.load_env(repo) == "project folder"
     assert os.environ["PORTKEY_API_KEY"] == "from-repo"
+
+
+def test_feedback_on_answers_is_recorded(client):
+    login(client)
+    assert client.post("/api/assistant/feedback", json={"run_id": "abc123", "rating": "up"}).json()["ok"]
+    assert client.post("/api/assistant/feedback", json={"run_id": "abc123", "rating": "sideways"}).status_code == 400
+    fb = client.get("/api/dashboard").json()["feedback"]
+    assert fb["votes"] == 1 and fb["satisfaction"] == 100

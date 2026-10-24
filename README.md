@@ -75,8 +75,9 @@ To stop the app, press `Ctrl+C` in the terminal.
    - Open **"How I found these"** under any answer to see the agent's tool calls, and the ⚡ line for its token usage.
 5. **Sell:** **+ Sell** → type rough notes → **Draft my listing** → review → **Post listing**.
 6. **Save and contact:** tap the heart to save, or **Contact seller** to send a simulated inquiry, which appears in **Inbox**.
-7. **AI & Safety dashboard** (account menu): live token usage per run, guardrail events, held listings, and one-click attack demos.
-8. **Reset demo data** (account menu) returns everything to the starting state.
+7. **How SOMthing works** (account menu or footer): the agent diagram, what's new compared with existing apps, and costs.
+8. **AI & Safety dashboard** (account menu): live token usage per run, user feedback (thumbs up/down on SOMbot answers), guardrail events, held listings, and one-click attack demos.
+9. **Reset demo data** (account menu) returns everything to the starting state.
 
 ---
 

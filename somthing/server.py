@@ -61,6 +61,12 @@ class ChatBody(BaseModel):
     message: str
 
 
+class FeedbackBody(BaseModel):
+    run_id: str
+    rating: str
+    comment: str = ""
+
+
 class DraftBody(BaseModel):
     notes: str
 
@@ -333,6 +339,14 @@ def create_app(state: AppState | None = None) -> FastAPI:
             sess["history"] = sess["history"][-2 * config.HISTORY_TURNS:]
         result["budget"] = state.guards.budget.status(token).__dict__
         return result
+
+    @app.post("/api/assistant/feedback")
+    def assistant_feedback(body: FeedbackBody, request: Request):
+        token, _ = current_session(request)
+        if body.rating not in ("up", "down") or not body.run_id.isalnum() or len(body.run_id) > 20:
+            raise HTTPException(status_code=400, detail="Invalid feedback.")
+        state.log.add_feedback(body.run_id, token, body.rating, body.comment.strip())
+        return {"ok": True}
 
     @app.post("/api/assistant/reset")
     def assistant_reset(request: Request):

@@ -6,6 +6,7 @@ import hashlib
 import json
 import threading
 import time
+import uuid
 from dataclasses import asdict, dataclass, field
 from pathlib import Path
 
@@ -53,12 +54,34 @@ class RunRecord:
     guardrails: list[str] = field(default_factory=list)
     latency_ms: int = 0
     question: str = ""
+    run_id: str = field(default_factory=lambda: uuid.uuid4().hex[:10])
 
 
 class UsageLog:
     def __init__(self, path: Path | None = None):
         self.path = path or (config.RUNTIME_DIR / "usage_log.jsonl")
+        self.feedback_path = self.path.with_name(self.path.stem + "_feedback.jsonl")  # thumbs up/down on AI answers
         self._lock = threading.Lock()
+
+    def add_feedback(self, run_id: str, session: str, rating: str, comment: str) -> dict:
+        row = {"ts": time.strftime("%Y-%m-%dT%H:%M:%S"), "run_id": run_id, "session": self.session_hash(session),
+               "rating": rating, "comment": comment[:300]}
+        with self._lock:
+            self.feedback_path.parent.mkdir(parents=True, exist_ok=True)
+            with self.feedback_path.open("a") as f:
+                f.write(json.dumps(row) + "\n")
+        return row
+
+    def read_feedback(self) -> list[dict]:
+        if not self.feedback_path.is_file():
+            return []
+        rows = []
+        for line in self.feedback_path.read_text().splitlines():
+            try:
+                rows.append(json.loads(line))
+            except json.JSONDecodeError:
+                continue
+        return rows
 
     @staticmethod
     def session_hash(session_key: str) -> str:
@@ -67,6 +90,7 @@ class UsageLog:
     def write(self, record: RunRecord) -> dict:
         row = {
             "ts": time.strftime("%Y-%m-%dT%H:%M:%S"),
+            "run_id": record.run_id,
             "agent": record.agent,
             "session": self.session_hash(record.session),
             "outcome": record.outcome,
@@ -128,7 +152,19 @@ class UsageLog:
             output_tokens=sum(r.get("output_tokens", 0) for r in rows),
             model_calls=sum(r.get("model_calls", 0) for r in rows),
         )
+        feedback = self.read_feedback()
+        latest = {}
+        for f in feedback:  # one vote per answer (last one wins)
+            latest[f["run_id"]] = f
+        votes = list(latest.values())
+        up = sum(v["rating"] == "up" for v in votes)
+        questions = {r["run_id"]: r.get("question", "") for r in rows if r.get("run_id")}
         return {
+            "feedback": {
+                "votes": len(votes), "up": up, "down": len(votes) - up,
+                "satisfaction": round(100 * up / len(votes)) if votes else None,
+                "recent": [{**v, "question": questions.get(v["run_id"], "")} for v in votes[-8:][::-1]],
+            },
             "model": config.MODEL_NAME,
             "prices_configured": config.PRICE_INPUT_PER_M is not None,
             "totals": totals.to_dict(),
