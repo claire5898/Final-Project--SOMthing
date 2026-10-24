@@ -587,5 +587,5 @@ LISTING_DRAWING = {
     "L037": "grad_cap", "L038": "receipt", "L039": "toolbox", "L040": "assembly", "L041": "bed",
     "L042": "bike_repair", "L043": "car_repair", "L044": "camera", "L045": "camera_flash", "L046": "slides",
     "L047": "palette", "L048": "microphone", "L049": "resume", "L050": "piano", "L051": "speech_fr",
-    "L052": "speech_es", "L053": "laptop", "L054": "bed",
+    "L052": "speech_es", "L053": "laptop", "L054": "bed", "L055": "grad_cap",
 }
