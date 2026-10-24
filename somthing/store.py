@@ -21,8 +21,17 @@ from .safety import scan_text
 PUBLIC_LISTING_FIELDS = (
     "id", "section", "category", "title", "description", "price", "price_unit", "condition",
     "experience", "location", "availability", "seller_id", "emoji", "tags", "created_at",
-    "image", "status", "is_demo_post",
+    "image", "photo_credit", "status", "is_demo_post",
 )
+
+PHOTO_DIR = config.STATIC_DIR / "img" / "photos"
+_PHOTO_CREDITS_FILE = config.DATA_DIR / "photo_credits.json"
+PHOTO_CREDITS: dict = json.loads(_PHOTO_CREDITS_FILE.read_text()) if _PHOTO_CREDITS_FILE.is_file() else {}
+
+
+def photo_for(key: str, fallback: str) -> str:
+    """Real photo if we have one (static/img/photos/<key>.jpg), otherwise the illustration."""
+    return f"/static/img/photos/{key}.jpg" if (PHOTO_DIR / f"{key}.jpg").is_file() else fallback
 
 
 class Store:
@@ -43,7 +52,9 @@ class Store:
             self.listings: dict[str, dict] = {}
             for raw in self._seed_listings:
                 listing = copy.deepcopy(raw)
-                listing.setdefault("image", f"/static/img/listings/{listing['id']}.svg")
+                listing.setdefault("image", photo_for(listing["id"], f"/static/img/listings/{listing['id']}.svg"))
+                if listing["id"] in PHOTO_CREDITS:
+                    listing["photo_credit"] = PHOTO_CREDITS[listing["id"]]
                 listing["is_demo_post"] = False
                 # Seed listings pass through the same safety scan as new posts.
                 reasons = scan_text(listing["title"], listing["description"])
@@ -142,9 +153,11 @@ class Store:
                 "emoji": _emoji_for(fields["category"]),
                 "tags": fields.get("tags", []),
                 "created_at": date.today().isoformat(),
-                "image": image_url or f"/static/img/categories/{fields['category']}.svg",
+                "image": image_url or photo_for(f"cat-{fields['category']}", f"/static/img/categories/{fields['category']}.svg"),
                 "is_demo_post": True,
             }
+            if not image_url and f"cat-{fields['category']}" in PHOTO_CREDITS:
+                listing["photo_credit"] = PHOTO_CREDITS[f"cat-{fields['category']}"]
             if section == "physical":
                 listing["condition"] = fields["condition"]
             else:

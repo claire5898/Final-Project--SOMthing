@@ -345,7 +345,8 @@
       <div class="breadcrumb"><a href="#/">Home</a> › <a href="#/browse?section=${esc(l.section)}">${esc(sectionLabel(l.section))}</a> › <a href="#/browse?section=${esc(l.section)}&category=${esc(l.category)}">${esc(catLabel(l.category))}</a></div>
       ${l.status === "held" ? `<div class="notice warn" style="margin-bottom:16px">${ic("shield")} <b>Held for safety review.</b> Only you can see this listing. Our filter found: ${esc((l.safety_reason_labels || []).join("; "))}.</div>` : ""}
       <div class="detail">
-        <div class="photo"><img src="${esc(l.image)}" alt="${esc(l.title)}" /></div>
+        <div><div class="photo"><img src="${esc(l.image)}" alt="${esc(l.title)}" /></div>
+          ${l.photo_credit ? `<div class="credit">Stock photo: ${l.photo_credit.artist ? esc(l.photo_credit.artist) + " · " : ""}${l.photo_credit.license_url ? `<a href="${esc(l.photo_credit.license_url)}" target="_blank" rel="noopener">${esc(l.photo_credit.license)}</a>` : esc(l.photo_credit.license)} · <a href="${esc(l.photo_credit.source)}" target="_blank" rel="noopener">source</a></div>` : ""}</div>
         <div>
           <div class="meta" style="display:flex;gap:6px;flex-wrap:wrap"><span class="tag accent">${esc(sectionLabel(l.section))}</span>${l.is_demo_post ? '<span class="tag demo">demo post</span>' : ""}</div>
           <h1>${esc(l.title)}</h1>

@@ -127,11 +127,14 @@ somthing/
   server.py             FastAPI routes
   catalog.py            sections and categories
 static/                 website (plain HTML/CSS/JS, no build step)
+static/img/photos/      real listing photos (Pexels License / Creative Commons; see CREDITS.md)
 data/                   fictional users.json and listings.json
 tests/                  automated tests (fake model, no tokens)
 evals/                  live accuracy + token evaluation and saved results
 scripts/                draws the navy-and-white illustrations (make_images.py, illustrations.py)
 ```
+
+**Photos:** listing photos are real stock photos from Pexels and Wikimedia Commons, used under their licenses and credited in `CREDITS.md` and on each listing page. They illustrate fictional listings.
 
 **Dataset:** the demo dataset is small (14 fictional users and 54 listings in `data/`), so there's no separate big dataset to switch to.
 
