@@ -11,6 +11,8 @@ Two AI agents run on `gpt-6-luna` through the course Portkey key:
 | **SOMbot** (shopping assistant) | Understands requests like *"a desk under $100"*, *"I need help with Excel"*, or *"desk + chair + lamp under $200 total"* and returns real listings with real prices and sellers | `search_listings`, `get_listing_details`, `check_bundle` |
 | **Listing Helper** | Turns a seller's rough notes into a complete listing, with a price based on similar SOMthing listings | `get_price_comps` |
 
+**Project write-up:** [`report.html`](report.html) (full report) and [`slides.html`](slides.html) (slide deck). Download either file and open it in a browser.
+
 > 🎓 **Classroom demo.** All people and listings are fictional. Sign-in is a mock screen (no Yale connection), messages are simulated, and SOMthing never handles payments.
 
 ---
@@ -102,7 +104,7 @@ You can watch the defenses work: open **AI & Safety dashboard** (account menu) a
 ```bash
 python -m pytest -q
 ```
-54 tests use a scripted fake model to reproduce attacks and malfunctions and check that each one is stopped:
+55 tests use a scripted fake model to reproduce attacks and malfunctions and check that each one is stopped:
 - invented listings, runaway loops, obfuscated injection, guard blocks and fail-closed
 - canary leaks, scam advice, PII, prohibited items, fake uploads, brute-force sign-in
 - budget exhaustion and provider outages
