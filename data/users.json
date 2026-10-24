@@ -1,5 +1,5 @@
 [
-  {"id": "u00", "name": "Jordan Lee", "program": "MBA", "class_year": 2028, "bio": "First-year MBA from Chicago. Setting up my first New Haven apartment and always up for a pickup basketball game.", "location": "East Rock", "member_since": "2026-08"},
+  {"id": "u00", "name": "Tauhid Zaman", "program": "Demo account", "class_year": null, "bio": "Demo account for exploring SOMthing. Anything posted, saved or sent from this account is simulated.", "location": "New Haven", "member_since": "2026-10"},
   {"id": "u01", "name": "Maya Chen", "program": "MBA", "class_year": 2027, "bio": "Ex-strategy consultant. I've built more financial models than I can count and I like helping first-years get fast in Excel.", "location": "Downtown New Haven", "member_since": "2025-08"},
   {"id": "u02", "name": "Diego Ramírez", "program": "MBA", "class_year": 2027, "bio": "Car and bike nerd from Monterrey. Worked in operations at an auto parts company before SOM.", "location": "Wooster Square", "member_since": "2025-08"},
   {"id": "u03", "name": "Priya Natarajan", "program": "MAM", "class_year": 2027, "bio": "Product designer turned MAM student. I do brand identities, pitch decks and portraits on the side.", "location": "Prospect Hill", "member_since": "2026-08"},

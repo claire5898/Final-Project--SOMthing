@@ -106,7 +106,7 @@
   function shell(content, active = "") {
     const me = S.me;
     return `
-      <div class="ribbon">${ic("info")} Classroom demo · all people &amp; listings are fictional · payments happen outside SOMthing</div>
+      <div class="ribbon">${ic("info")} Classroom demo · all sellers &amp; listings are fictional · payments happen outside SOMthing</div>
       <header class="header"><div class="header-inner">
         <a class="logo" href="#/"><b>SOM</b><span>thing</span></a>
         <form class="search-bar" id="top-search" role="search">
@@ -231,7 +231,7 @@
       `<a class="chip" href="#/browse?section=${sec}&category=${id}"><img class="cat-ic" src="/static/img/icons/${id}.svg" alt="" /> ${esc(label)} <span class="count">${S.meta.category_counts[id] || 0}</span></a>`).join("");
     app.innerHTML = shell(`
       <section class="hero"><div>
-        <h1>Hi ${esc(firstName(S.me.name))}! Buy, sell &amp; swap skills with your SOM classmates.</h1>
+        <h1>Hello ${esc(firstName(S.me.name))}! Buy, sell &amp; swap skills with your SOM classmates.</h1>
         <p>From a desk for your East Rock apartment to an Excel coach before recruiting, find it from people in your community.</p>
         <div class="hero-actions">
           <button class="btn primary" data-ask="Find a desk under $100">${ic("sparkle")} Ask SOMbot: “a desk under $100”</button>
@@ -413,7 +413,7 @@
         ${avatar(u, "lg")}
         <div style="flex:1">
           <h1>${esc(u.name)} ${mine ? '<span class="tag accent" style="vertical-align:middle">you</span>' : ""}</h1>
-          <div class="link" style="font-weight:700">${esc(u.program)} · Class of ${esc(u.class_year)}</div>
+          <div class="link" style="font-weight:700">${esc(u.program)}${u.class_year ? ` · Class of ${esc(u.class_year)}` : ""}</div>
           <p style="margin:8px 0 0">${esc(u.bio)}</p>
           <div class="stats"><span><b>${u.listings.length}</b> listings</span><span>${ic("pin")} ${esc(u.location)}</span><span>Member since ${esc(u.member_since)}</span></div>
         </div>
@@ -671,7 +671,7 @@
   function renderChat() {
     if (!S.chat.length) {
       chatEl.innerHTML = `
-        <div class="msg bot">Hi ${esc(firstName(S.me?.name))}! I'm SOMbot ${ic("sparkle")} Tell me what you need and I'll search real SOMthing listings for you. I only show listings that actually exist, with their real prices and sellers.</div>
+        <div class="msg bot">Hello ${esc(firstName(S.me?.name))}! I'm SOMbot ${ic("sparkle")} Tell me what you need and I'll search real SOMthing listings for you. I only show listings that actually exist, with their real prices and sellers.</div>
         <div class="suggestions">${SUGGESTIONS.map((s) => `<button class="chip" data-ask="${esc(s)}">${esc(s)}</button>`).join("")}</div>`;
       return;
     }

@@ -242,7 +242,7 @@ def compact_listing(store: Store, l: dict, full: bool = False) -> dict:
         "category": l["category"],
         "location": l["location"],
         "availability": l["availability"],
-        "seller": f"{seller['name']} ({seller['program']} '{str(seller['class_year'])[-2:]})",
+        "seller": f"{seller['name']} ({seller['program']}" + (f" '{str(seller['class_year'])[-2:]})" if seller["class_year"] else ")"),
     }
     if l["section"] == "physical":
         out["condition"] = l.get("condition")
