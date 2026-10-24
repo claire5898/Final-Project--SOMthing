@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOMthing · The SOM community marketplace (classroom demo)</title>
+  <meta name="theme-color" content="#0b0a0d" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='48' fill='%23ff4fa3'/><text x='50' y='68' font-size='54' text-anchor='middle' font-family='Arial' font-weight='900' fill='%230b0a0d'>S</text></svg>" />
+  <link rel="stylesheet" href="/static/css/styles.css" />
+</head>
+<body>
+  <div id="app"></div>
+
+  <!-- SOMbot assistant drawer -->
+  <div id="overlay" class="overlay hidden"></div>
+  <aside id="drawer" class="drawer" aria-label="SOMbot shopping assistant" aria-hidden="true">
+    <div class="drawer-head">
+      <div style="font-size:1.6rem">✨</div>
+      <div class="title">
+        <b>SOMbot · AI shopping assistant</b>
+        <span class="muted small">Searches real SOMthing listings · gpt-6-luna</span>
+      </div>
+      <button class="icon-btn" id="chat-reset" title="Start a new conversation">↺</button>
+      <button class="icon-btn" id="drawer-close" title="Close">✕</button>
+    </div>
+    <div class="chat" id="chat"></div>
+    <div class="composer">
+      <form id="chat-form" autocomplete="off">
+        <input type="text" id="chat-input" maxlength="500" placeholder="e.g. Find a desk under $100" aria-label="Message SOMbot" />
+        <button class="btn primary" id="chat-send" type="submit">Send</button>
+      </form>
+      <div class="usage-line" id="budget-label" style="margin-top:8px"></div>
+      <div class="budget"><div id="budget-bar" style="width:0%"></div></div>
+      <div class="usage-line" style="margin-top:6px">AI answers can make mistakes. Prices and sellers on the cards come straight from the listings.</div>
+    </div>
+  </aside>
+
+  <div id="modal-root"></div>
+  <div id="toast" class="toast hidden" role="status"></div>
+  <script src="/static/js/app.js"></script>
+</body>
+</html>
