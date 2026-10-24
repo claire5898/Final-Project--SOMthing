@@ -144,7 +144,7 @@
               <div style="padding:10px 12px"><b>${esc(me?.name)}</b><div class="muted small">${esc(me?.program)} ${esc(yr(me?.class_year))}</div></div>
               <a href="#/user/${esc(me?.id)}">${ic("user")} My profile</a>
               <a href="#/saved">${ic("heart")} Saved items</a>
-              <a href="#/inbox">${ic("mail")} Inbox (sent inquiries)</a>
+              <a href="#/inbox">${ic("mail")} Inbox</a>
               <a href="#/dashboard">${ic("chart")} AI &amp; Safety dashboard</a>
               <button id="reset-demo">${ic("refresh")} Reset demo data</button>
               <button id="logout">${ic("logout")} Sign out</button>

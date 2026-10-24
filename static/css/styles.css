@@ -61,6 +61,9 @@ img { display: block; max-width: 100%; }
 }
 .menu a, .menu button { display: flex; gap: 10px; align-items: center; width: 100%; text-align: left; padding: 10px 12px; border-radius: 8px; border: 0; background: transparent; cursor: pointer; }
 .menu a:hover, .menu button:hover { background: var(--surface-2); }
+.nav .menu a, .nav .menu button { color: var(--text); font-weight: 500; font-size: 0.95rem; border-radius: 8px; padding: 10px 12px; }
+.nav .menu a:hover, .nav .menu button:hover { color: var(--navy); background: var(--surface-2); }
+.nav .menu .ic { color: var(--navy-2); }
 
 /* ---------- layout ---------- */
 .page { max-width: 1240px; margin: 0 auto; padding: 24px 20px 120px; }
