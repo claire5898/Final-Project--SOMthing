@@ -104,6 +104,32 @@ ul.tight { font-size: .7em; margin: 0; padding-left: 1.1em; } ul.tight li { marg
 .reveal .progress { color: var(--navy); }
 .foot { position: absolute; left: 0; right: 120px; bottom: -18px; display: flex; justify-content: space-between; font-size: 13px; color: #9a8f7c; letter-spacing: .04em; }
 .reveal img { background: #fff; }
+/* ===== classic polished overrides ===== */
+.reveal h1, .reveal h2, .reveal h3 { font-family: Georgia, "Times New Roman", serif; letter-spacing: 0; font-weight: 700; }
+.reveal h2 { font-size: 1.4em; padding-bottom: 10px; border-bottom: 2px solid var(--navy); margin-bottom: 14px; }
+.kicker { font-family: Georgia, serif; font-variant: small-caps; text-transform: lowercase; letter-spacing: .08em; font-size: .62em; color: #8a7a5c; font-weight: 400; }
+.sub { font-style: italic; font-family: Georgia, serif; margin-bottom: 14px; }
+.card, .stat, .layer, .quote, .pill, table.cmp, .diagram svg, .reveal img, .shot, .demo img, .safeimg, .rowimg { border-radius: 2px !important; box-shadow: none !important; }
+.card { border: 1px solid var(--line); border-top: 3px solid var(--navy); padding: 16px 20px; }
+.card h3 { font-size: 1.12em; border-bottom: 1px solid var(--line); padding-bottom: 6px; margin-bottom: 8px; }
+.stat { border: 1px solid var(--line); border-top: 3px solid var(--navy); }
+.stat.dark { border-top-color: #c9a227; }
+.big { font-family: Georgia, serif; font-weight: 700; letter-spacing: 0; }
+.quote { border-left: 3px solid #c9a227; background: var(--paper); font-family: Georgia, serif; }
+.pill { background: transparent; border: none; padding: 0; margin: 14px 26px 0 0; font-size: .6em; }
+.pill b::before { content: "■ "; color: #c9a227; font-size: .8em; }
+.layer { border-left: 3px solid var(--navy); background: var(--paper); border-top: 1px solid var(--line); border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); }
+.layer b { font-family: Georgia, serif; }
+.rt .from, .rt .to { font-family: Georgia, serif; }
+table.cmp th { font-weight: 600; letter-spacing: .02em; }
+.reveal .safeimg { max-height: 455px; }
+.reveal .demo .tallimg { max-height: 510px; }
+.reveal .demo .wideimg { max-height: 380px; }
+.reveal .diagram svg { height: 470px; }
+.title-wrap h1 { font-family: Georgia, serif; font-size: 3.1em; }
+.title-rule { width: 90px; height: 3px; background: #c9a227; margin: 16px 0 4px; }
+.pitch { font-family: Georgia, serif; font-style: italic; }
+
 .shots-row { display: flex; gap: 18px; margin-top: 16px; align-items: flex-start; }
 .reveal .rowimg { max-height: 260px; width: auto; border: 1px solid var(--line); border-radius: 10px; }
 .reveal .slide-number { background: transparent; color: #8a9bb5; font-size: 14px; }
@@ -113,11 +139,12 @@ S = []
 
 # 1. Title
 S.append(f"""
-<section class="title-slide" data-background-gradient="linear-gradient(135deg, #0b2a55, #00356b 60%, #1f4e8c)">
+<section class="title-slide" data-background-color="#0b2a55">
  <div class="title-wrap">
   <div>
    <div class="kicker" style="color:#a9c4ea">AI Foundations for Managers · Final Project</div>
    <h1>SOM<span>thing</span></h1>
+   <div class="title-rule"></div>
    <p class="pitch">A trusted marketplace where SOM students buy, sell and swap <b>items and skills</b>, with AI agents that only recommend listings that actually exist.</p>
    <div class="who"><b>Claire Zhao</b> · October 2026<br/>github.com/claire5898/Final-Project--SOMthing</div>
   </div>
