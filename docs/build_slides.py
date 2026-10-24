@@ -295,7 +295,7 @@ S.append(f"""
   <div class="stat"><span class="big">1 min</span><b>to list an item</b><br/>vs. ~10 min writing and price-checking (draft took 7 s)</div>
   <div class="stat"><span class="big">10/10</span><b>requests answered correctly</b><br/>0 invented listings shown</div>
  </div>
- <div class="quote"><b>Pilot user:</b> I built SOMthing for my own selling and tutoring needs and used it end to end: finding move-in furniture, drafting a listing for my own furniture, and searching for Excel and statistics help. A class-section pilot is next, and the app already collects thumbs up/down on every answer.</div>
+ <div class="quote"><b>Pilot user:</b> I built SOMthing for my own selling and tutoring needs and used it end to end: finding move-in furniture, drafting a listing for my own furniture, and searching for Excel help and tutoring. A class-section pilot is next, and the app already collects thumbs up/down on every answer.</div>
  <div class="shots-row">{img("inbox", "rowimg")}{img("mobile", "rowimg")}</div>
 <aside class="notes">An answer takes about 5 seconds. A move-in bundle that would take 30 to 60 minutes across Slack and apps takes 2 to 3 minutes, and a listing goes from about 10 minutes to about 1. I'm the pilot user and used it end to end for my own needs. A class-section pilot is next, and the app already collects ratings.</aside>
 </section>""")
