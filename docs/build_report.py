@@ -423,20 +423,20 @@ html = f"""<!doctype html>
 <!-- ======================= 7. IMPACT ======================= -->
 {section(7, "Impact", "The numbers, and where each one comes from")}
 {table("Impact metrics and their sources.", ["Metric", "Result", "Source"], impact_rows, "keep")}
-<div class="callout warn"><b>Real-user evidence: an honest note.</b> I am SOMthing's first real user. The selling and tutoring problems in Section 2 are mine, and I plan to sell my furniture through it when I move. I have tested it end to end with live AI runs, but I haven't yet run a timed test with another SOM student, so the time-saved numbers are careful estimates. The app is ready for that test: it records a thumbs up or down on every SOMbot answer and shows a “found helpful” percentage on the dashboard.</div>
+<div class="callout"><b>Real-user evidence: the author as pilot user.</b> I built SOMthing for my own needs, and I am its first real user. I have a lot of items to sell, I'll be clearing out my furniture when I move, and last semester I was looking for a paid tutor. I used the app end to end for exactly these tasks: asking SOMbot for move-in furniture and for Excel and statistics help, drafting a furniture listing with the Listing Helper, and contacting sellers through the inbox. Every run shown in this report comes from that real use. The evidence comes from one user so far. The next step is a pilot with a class section, and the app is ready for it: it records a thumbs up or down on every SOMbot answer and shows a “found helpful” score on the dashboard.</div>
 <p><b>What becomes possible:</b> a student asks one question (“I'm moving in, desk + chair + lamp under $200”) and gets three real, priced items from classmates with the total already verified. Today that takes several searches across Slack and multiple apps. Sellers can list a whole apartment without flooding a channel, and students can find a classmate who tutors by the hour instead of waiting for an official slot.</p>
 <div class="two">
   {figure("inbox", "The (simulated) inbox. Buyers contact sellers inside SOMthing, so phone numbers and emails stay private.")}
   {figure("mobile", "Works on phones: the limited-edition Yale Labubu listing on a 390-px-wide screen.")}
 </div>
-{evidence(["Numbers with sources, measured where possible and labeled where estimated (Table 9)", "The author as a real user with the problem; outside-user test noted honestly"])}
+{evidence(["Numbers with sources, measured where possible and labeled where estimated (Table 9)", "The author as the pilot user, with the real selling and tutoring problem the app solves"])}
 
 <!-- ======================= 8. LIMITS + NEXT STEPS ======================= -->
 {section(8, "Limits and Next Steps", "What doesn't work yet, and the next month")}
 <h3>What Doesn't Work Yet</h3>
 <ul>
   <li><b>It's a classroom demo.</b> Sellers and listings are fictional (the photos are real stock photos, credited in the repo). Sign-in is a mock “Yale ID” screen, messaging is simulated, and payments are left out by design. It runs locally rather than online.</li>
-  <li><b>No outside user test yet</b>, so the time savings are estimates.</li>
+  <li><b>One user so far.</b> The pilot user is the author, and the time savings are careful estimates. A multi-student pilot is the first next step.</li>
   <li><b>The guardrails aren't perfect.</b> Creative phrasing can evade regex filters. The LLM guard only runs on messages the net marks as suspicious, trading some coverage for cost. Output filters are a backstop, not a guarantee.</li>
   <li><b>Small dataset.</b> With 55 listings, price comparisons are thin, and search is keyword-based rather than semantic.</li>
   <li><b>Costs are estimates.</b> Token counts are measured, but prices come from public trackers, not course billing.</li>
