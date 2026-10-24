@@ -157,7 +157,7 @@ def valid_category(section: str, category: str) -> bool:
     return section in SECTIONS and category in SECTIONS[section]["categories"]
 
 
-def price_outlier(listings: list[dict], listing: dict, ratio: float = 0.35) -> bool:
+def price_outlier(listings: list[dict], listing: dict, ratio: float = 0.25) -> bool:
     """'Too good to be true' check: physical item priced far below similar items in its category."""
     if listing.get("section") != "physical" or not listing.get("price"):
         return False

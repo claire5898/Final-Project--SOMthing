@@ -649,9 +649,9 @@
           <h3 style="margin-top:0">${ic("bolt")} What it costs</h3>
           <table class="facts">
             <tr><td>One SOMbot answer</td><td>≈ 3,100 input (≈80% cached) + 150 output tokens ≈ <b>$0.00016</b></td></tr>
-            <tr><td>Per user per month</td><td>≈ <b>$0.01</b> (30 questions + 4 listing drafts)</td></tr>
-            <tr><td>100 users</td><td>≈ <b>$1 / month</b></td></tr>
-            <tr><td>10,000 users</td><td>≈ <b>$100 / month</b></td></tr>
+            <tr><td>Per user per month</td><td>≈ <b>$0.006</b> (30 questions + 4 listing drafts)</td></tr>
+            <tr><td>100 users</td><td>≈ <b>$0.60 / month</b></td></tr>
+            <tr><td>10,000 users</td><td>≈ <b>$60 / month</b></td></tr>
           </table>
           <div class="small muted">Measured token counts × estimated gpt-6-luna list prices ($0.10 / $0.01 cached / $0.50 per 1M tokens). Browsing and filters use no AI at all.</div>
           <a class="btn primary" style="margin-top:12px" href="#/dashboard">${ic("chart")} Open the AI &amp; Safety dashboard</a>
